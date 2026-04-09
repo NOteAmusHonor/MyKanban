@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "kanban.schema.json",
+  "title": "MyKanban Board Data",
+  "description": "Schema for kanban.json — the local data file for MyKanban boards. AIs can read and write this file directly to create, update, move, or delete tickets and columns.",
+  "type": "object",
+  "required": ["meta", "board", "columns", "tickets"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "version": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "lastModified": { "type": "string", "format": "date-time" }
+      }
+    },
+    "board": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "description": "Display name of the board" }
+      }
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "order", "color"],
+        "properties": {
+          "id": { "type": "string", "description": "Unique column ID" },
+          "title": { "type": "string", "description": "Column display name" },
+          "order": { "type": "integer", "minimum": 0, "description": "Column position (0-based)" },
+          "color": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$",
+            "description": "Hex color for column accent"
+          }
+        }
+      }
+    },
+    "tickets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "columnId",
+          "ticketNumber",
+          "title",
+          "priority",
+          "order",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": { "type": "string", "description": "Unique ticket ID" },
+          "columnId": { "type": "string", "description": "ID of the parent column" },
+          "ticketNumber": {
+            "type": "integer",
+            "minimum": 1000,
+            "maximum": 9999,
+            "description": "Random 4-digit ID shown as TK-XXXX"
+          },
+          "title": { "type": "string", "minLength": 1, "description": "Ticket title" },
+          "description": { "type": "string", "description": "Markdown description (optional)" },
+          "priority": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "urgent"],
+            "description": "Ticket priority"
+          },
+          "labels": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Custom tags/labels"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Position within the column (0-based)"
+          },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "meta": {
+        "version": "1.0.0",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "lastModified": "2026-01-01T12:00:00Z"
+      },
+      "board": { "id": "board-1", "name": "Mein Projekt" },
+      "columns": [{ "id": "col-todo", "title": "Zu erledigen", "order": 0, "color": "#6366f1" }],
+      "tickets": [
+        {
+          "id": "tk-abc123",
+          "columnId": "col-todo",
+          "ticketNumber": 4521,
+          "title": "Login-Bug beheben",
+          "description": "## Problem\n\nUser kann sich nicht einloggen wenn...",
+          "priority": "urgent",
+          "labels": ["bug", "auth"],
+          "order": 0,
+          "createdAt": "2026-01-01T10:00:00Z",
+          "updatedAt": "2026-01-01T10:00:00Z"
+        }
+      ]
+    }
+  ]
+}

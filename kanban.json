@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "createdAt": "2026-04-09T00:00:00.000Z",
+    "lastModified": "2026-04-09T20:07:58.063Z"
+  },
+  "board": {
+    "id": "board-1",
+    "name": "Mein Kanban-Board"
+  },
+  "columns": [
+    {
+      "id": "col-backlog",
+      "title": "Backlog",
+      "order": 0,
+      "color": "#64748b"
+    },
+    {
+      "id": "col-todo",
+      "title": "Zu erledigen",
+      "order": 1,
+      "color": "#6366f1"
+    },
+    {
+      "id": "col-inprogress",
+      "title": "In Bearbeitung",
+      "order": 2,
+      "color": "#f97316"
+    },
+    {
+      "id": "col-review",
+      "title": "Review",
+      "order": 3,
+      "color": "#a855f7"
+    },
+    {
+      "id": "col-done",
+      "title": "Erledigt",
+      "order": 4,
+      "color": "#22c55e"
+    }
+  ],
+  "tickets": []
+}
