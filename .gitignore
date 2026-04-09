@@ -9,8 +9,9 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-dist
 dist-ssr
+# dist is committed so it's available via npm install from GitHub
+# dist
 coverage
 *.local
 
