@@ -4,8 +4,8 @@ import type { Board, Column, Ticket, KanbanFile, Priority, WsEvent } from '@/typ
 import { generateId, generateTicketNumber } from '@/utils/helpers'
 import { useUiStore } from '../stores/ui'
 
-const API = import.meta.env.DEV ? 'http://localhost:3737' : ''
-const WS_URL = import.meta.env.DEV ? 'ws://localhost:3737' : `ws://${window.location.host}`
+const API = import.meta.env.DEV ? 'http://localhost:3000' : ''
+const WS_URL = import.meta.env.DEV ? 'ws://localhost:3000' : `ws://${window.location.host}`
 
 export const useBoardStore = defineStore('board', () => {
   const ui = useUiStore()

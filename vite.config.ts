@@ -60,7 +60,7 @@ export default defineConfig(({ mode }) => {
       proxy: {
         // In dev: proxy API calls to the standalone Express server
         '/api': {
-          target: 'http://localhost:3737',
+          target: 'http://localhost:3000',
           changeOrigin: true,
         },
       },

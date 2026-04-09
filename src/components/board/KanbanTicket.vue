@@ -60,6 +60,7 @@ function stripMarkdown(text: string): string {
 <style scoped>
 .ticket-card {
     position: relative;
+    flex-shrink: 0;
     background: var(--surface);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

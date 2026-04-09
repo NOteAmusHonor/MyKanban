@@ -501,32 +501,33 @@ onMounted(() => board.fetchBoard())
 /* ── Columns ─────────────────────────────────────────────────────────── */
 .columns-outer {
     flex: 1;
+    min-height: 0;
     overflow: hidden;
-    padding: 1.25rem 0;
+    position: relative;
 }
 
 .columns-scroll {
-    height: 100%;
+    position: absolute;
+    inset: 0;
     overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0 1.25rem;
+    overflow-y: visible;
+    padding: 1.25rem;
     display: flex;
     gap: 1rem;
-    align-items: flex-start;
-    scroll-snap-type: x proximity;
-    scroll-behavior: smooth;
+    align-items: stretch;
 }
 
 .columns-scroll::-webkit-scrollbar {
     height: 6px;
 }
 
+/* vuedraggable wrapper */
 .columns-container {
     display: flex;
     gap: 1rem;
     align-items: stretch;
-    align-self: stretch;
     height: 100%;
+    flex: 0 0 auto;
 }
 
 /* Add-column placeholder card */

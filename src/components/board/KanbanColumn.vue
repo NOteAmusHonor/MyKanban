@@ -125,6 +125,7 @@ async function onDragChange(event: {
     width: 300px;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .column {
@@ -132,6 +133,8 @@ async function onDragChange(event: {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 0;
+    max-height: 100%;
     overflow: hidden;
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
@@ -207,11 +210,13 @@ async function onDragChange(event: {
 .column-tickets {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 0 0.625rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    min-height: 60px;
+    min-height: 0;
+    max-height: 100%;
 }
 
 .column-tickets--empty {

@@ -2,7 +2,7 @@
   "meta": {
     "version": "1.0.0",
     "createdAt": "2026-04-09T21:20:56.250Z",
-    "lastModified": "2026-04-09T22:08:21.430Z"
+    "lastModified": "2026-04-09T23:21:16.275Z"
   },
   "board": {
     "id": "board-1",
@@ -48,10 +48,14 @@
       "title": "Loading-Zustände für Skill-Bewertungen hinzufügen",
       "description": "Wenn Nutzer einen Skill bewerten (0-5 Sterne), gibt es aktuell kein visuelles Feedback während des Ladevorgangs. Füge einen Loading-Zustand hinzu: Deaktiviere den Button während der Anfrage, zeige einen Spinner oder Skeleton-Animation, und gib Erfolgs-/Fehlermeldung nach Abschluss.",
       "priority": "urgent",
-      "labels": ["UI/UX", "Feedback", "Bewertung"],
+      "labels": [
+        "UI/UX",
+        "Feedback",
+        "Bewertung"
+      ],
       "order": 0,
       "createdAt": "2026-04-09T21:21:00.000Z",
-      "updatedAt": "2026-04-09T21:49:50.425Z"
+      "updatedAt": "2026-04-09T23:19:30.506Z"
     },
     {
       "id": "ticket-2",
@@ -60,10 +64,13 @@
       "title": "Ladebildschirm durch kreisenden Spinner ersetzen",
       "description": "Der aktuelle Ladebildschirm (App.vue) zeigt ein pulsierendes Quadrat mit Text 'Skill Center'. Ersetzt durch einen eleganten, kreisenden Loading-Spinner mit 3 konzentrischen Ringen, die sich mit unterschiedlichen Geschwindigkeiten drehen. Kein Text, keine Quadrate – nur kreisende Animation.",
       "priority": "medium",
-      "labels": ["UI/UX", "Loading"],
-      "order": 1,
+      "labels": [
+        "UI/UX",
+        "Loading"
+      ],
+      "order": 3,
       "createdAt": "2026-04-09T22:00:00.000Z",
-      "updatedAt": "2026-04-09T22:00:00.000Z"
+      "updatedAt": "2026-04-09T23:19:30.506Z"
     },
     {
       "id": "ticket-3",
@@ -72,34 +79,46 @@
       "title": "Fehlermeldungen und Loading-States für Login/Registrierung",
       "description": "Login- und Registrierungsformular zeigen aktuell keine Fehlermeldungen im UI an. Probleme: (1) Keine sichtbare Fehlermeldung bei falschem Passwort, (2) keine Fehlermeldung bei bereits existierendem Account, (3) kein visuelles Feedback während des Ladevorgangs (Button wird nicht deaktiviert, kein Spinner). Lösung: authStore.error im UI anzeigen, Button mit loading-State deaktivieren, Firebase Error Codes in benutzerfreundliche Nachrichten übersetzen.",
       "priority": "high",
-      "labels": ["UI/UX", "Feedback", "Authentifizierung"],
-      "order": 2,
+      "labels": [
+        "UI/UX",
+        "Feedback",
+        "Authentifizierung"
+      ],
+      "order": 4,
       "createdAt": "2026-04-09T22:00:00.000Z",
-      "updatedAt": "2026-04-09T22:00:51.439Z"
+      "updatedAt": "2026-04-09T23:19:30.506Z"
     },
     {
       "id": "ticket-4",
-      "columnId": "col-backlog",
+      "columnId": "col-done",
       "ticketNumber": "SC-004",
       "title": "Toast-Benachrichtigungen implementieren",
       "description": "Toast-Notification-System für Success/Error/Info-Meldungen einführen. Anwendungsfälle: Skill erstellt/gespeichert/gelöscht/bewertet, Link kopiert, Kontingent-Warnung, API-Fehler. Auto-Dismiss nach 3-5 Sekunden. Position: Oben rechts. Stackable bei mehreren Meldungen.",
       "priority": "high",
-      "labels": ["UI/UX", "Feedback", "Retention"],
-      "order": 3,
+      "labels": [
+        "UI/UX",
+        "Feedback",
+        "Retention"
+      ],
+      "order": 5,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:19:30.506Z"
     },
     {
       "id": "ticket-5",
-      "columnId": "col-backlog",
+      "columnId": "col-done",
       "ticketNumber": "SC-005",
       "title": "Dark Mode implementieren",
       "description": "CSS Custom Properties für alle Farben definieren, Dark/Light Toggle im Profil-Panel, Präferenz in localStorage speichern, prefers-color-scheme respektieren. Alle Komponenten auf Kontrast (4.5:1) und Konsistenz prüfen.",
       "priority": "high",
-      "labels": ["UI/UX", "Theme", "Retention"],
-      "order": 4,
+      "labels": [
+        "UI/UX",
+        "Theme",
+        "Retention"
+      ],
+      "order": 2,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:19:30.506Z"
     },
     {
       "id": "ticket-6",
@@ -108,10 +127,14 @@
       "title": "Skill-Versionierung implementieren",
       "description": "Versions-Subcollection in Firestore für jeden Skill. Bei jeder Änderung alte Version speichern. Versionshistorie als Timeline anzeigen, 'Zurücksetzen auf Version X' Funktion. Neue Cloud Function: revertSkillVersion.",
       "priority": "high",
-      "labels": ["Backend", "Firestore", "Retention"],
-      "order": 5,
+      "labels": [
+        "Backend",
+        "Firestore",
+        "Retention"
+      ],
+      "order": 0,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:21:16.275Z"
     },
     {
       "id": "ticket-7",
@@ -120,10 +143,14 @@
       "title": "Vorgefertigte Skill-Templates erstellen",
       "description": "Template-Katalog in JSON/Firestore erstellen mit Vorausfüllung für Kategorien: Schreiben, Code, Analyse, Kreativ. Template-Auswahl auf Home/Create-Seite. Admin-UI zum Verwalten. Senkt Einstiegsbarriere für neue Nutzer.",
       "priority": "medium",
-      "labels": ["Feature", "Templates", "Retention"],
-      "order": 6,
+      "labels": [
+        "Feature",
+        "Templates",
+        "Retention"
+      ],
+      "order": 1,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:21:16.275Z"
     },
     {
       "id": "ticket-8",
@@ -132,10 +159,14 @@
       "title": "Multi-Format Skill-Export (SKILL.md + 26+ Tools)",
       "description": "Export in 8+ Formaten: SKILL.md (YAML-Frontmatter + Markdown ZIP), .windsurfrules, .cursorrules, .aider.instructions.md, Amazon Q YAML, .instructions.md, ChatGPT/Claude/Gemini Web. Export-Modal mit Vorschau + Installationshinweisen.",
       "priority": "medium",
-      "labels": ["Feature", "Export", "USP"],
-      "order": 7,
+      "labels": [
+        "Feature",
+        "Export",
+        "USP"
+      ],
+      "order": 2,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:21:16.275Z"
     },
     {
       "id": "ticket-9",
@@ -144,10 +175,14 @@
       "title": "Skill-Import (SKILL.md Upload)",
       "description": "SKILL.md Upload und parsen, Validierung der YAML-Frontmatter, Import in Skill-Center-Datenbank. Drag & Drop unterstützen. Konflikt-Handling wenn Skill bereits existiert.",
       "priority": "medium",
-      "labels": ["Feature", "Import", "Retention"],
-      "order": 8,
+      "labels": [
+        "Feature",
+        "Import",
+        "Retention"
+      ],
+      "order": 3,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:21:16.275Z"
     },
     {
       "id": "ticket-10",
@@ -156,10 +191,14 @@
       "title": "Streak-System für tägliche Nutzer",
       "description": "Daily-Tracking mit lastActiveDate, streak, bestStreak im User-Dokument. Streak-Widget in Dashboard-Sidebar. Belohnungen: 3 Tage (+5 Prompt), 7 Tage (+10 KI), 14 Tage (Badge + Bonus), 30/60/100 Tage. Streak- Freeze 1x/Woche. Animation bei Verlängerung.",
       "priority": "medium",
-      "labels": ["Gamification", "Retention", "Backend"],
-      "order": 9,
+      "labels": [
+        "Gamification",
+        "Retention",
+        "Backend"
+      ],
+      "order": 4,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:21:16.275Z"
     },
     {
       "id": "ticket-11",
@@ -168,10 +207,14 @@
       "title": "Badge-System (Erfolgsabzeichen)",
       "description": "24+ Badges in 6 Kategorien: Creator, Popularität, Qualität, Streak, Community, Spezial. Badge-Definitionen in Firestore, checkBadgeEligibility Function. BadgeCase-Komponente, UnlockModal mit Animation. Badges im Profil anzeigen. Rarität: Common/Rare/Epic/Legendary.",
       "priority": "low",
-      "labels": ["Gamification", "Retention", "Backend"],
-      "order": 10,
+      "labels": [
+        "Gamification",
+        "Retention",
+        "Backend"
+      ],
+      "order": 5,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
+      "updatedAt": "2026-04-09T23:21:16.275Z"
     },
     {
       "id": "ticket-12",
@@ -180,22 +223,14 @@
       "title": "Pagination / Infinite Scroll für Skill-Listen",
       "description": "Skills paginieren (20 pro Seite). Backend: getLibrarySkills mit limit und startAfter. Pagination-UI oder Infinite Scroll. Cursor-basierte Pagination für Firestore. 'Mehr laden'-Button als Fallback.",
       "priority": "medium",
-      "labels": ["UI/UX", "Performance", "Backend"],
-      "order": 11,
+      "labels": [
+        "UI/UX",
+        "Performance",
+        "Backend"
+      ],
+      "order": 6,
       "createdAt": "2026-04-10T00:00:00.000Z",
-      "updatedAt": "2026-04-10T00:00:00.000Z"
-    },
-    {
-      "id": "7oeexstj1mns13jck",
-      "columnId": "col-backlog",
-      "ticketNumber": 2418,
-      "title": "Test",
-      "description": "",
-      "priority": "medium",
-      "labels": [],
-      "order": 9,
-      "createdAt": "2026-04-09T22:08:21.428Z",
-      "updatedAt": "2026-04-09T22:08:21.428Z"
+      "updatedAt": "2026-04-09T23:21:16.275Z"
     }
   ]
 }
