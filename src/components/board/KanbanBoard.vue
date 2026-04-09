@@ -514,6 +514,7 @@ onMounted(() => board.fetchBoard())
     gap: 1rem;
     align-items: flex-start;
     scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
 }
 
 .columns-scroll::-webkit-scrollbar {
@@ -523,7 +524,9 @@ onMounted(() => board.fetchBoard())
 .columns-container {
     display: flex;
     gap: 1rem;
-    align-items: flex-start;
+    align-items: stretch;
+    align-self: stretch;
+    height: 100%;
 }
 
 /* Add-column placeholder card */

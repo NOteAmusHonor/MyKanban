@@ -123,13 +123,15 @@ async function onDragChange(event: {
 .column-wrap {
     flex-shrink: 0;
     width: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
 .column {
     border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 10rem);
+    height: 100%;
     overflow: hidden;
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
