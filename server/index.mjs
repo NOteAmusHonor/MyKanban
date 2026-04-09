@@ -15,6 +15,17 @@ const KANBAN_FILE = resolve(process.cwd(), 'kanban.json')
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
+// ─── Read project name from CWD's package.json ────────────────────────────
+function getProjectName() {
+  try {
+    const pkgPath = resolve(process.cwd(), 'package.json')
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'))
+    return pkg.name ?? 'Mein Kanban-Board'
+  } catch {
+    return 'Mein Kanban-Board'
+  }
+}
+
 // ─── Default board data ────────────────────────────────────────────────────
 const defaultData = {
   meta: {
@@ -22,7 +33,7 @@ const defaultData = {
     createdAt: new Date().toISOString(),
     lastModified: new Date().toISOString(),
   },
-  board: { id: 'board-1', name: 'Mein Kanban-Board' },
+  board: { id: 'board-1', name: getProjectName() },
   columns: [
     { id: 'col-backlog', title: 'Backlog', order: 0, color: '#64748b' },
     { id: 'col-todo', title: 'Zu erledigen', order: 1, color: '#6366f1' },
