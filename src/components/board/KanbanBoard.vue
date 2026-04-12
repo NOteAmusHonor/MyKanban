@@ -3,10 +3,7 @@
         <!-- ── Header ─────────────────────────────────────────────────── -->
         <header class="board-header glass">
             <div class="header-left">
-                <div class="logo">
-                    <span class="logo-icon">⬚</span>
-                    <span class="logo-text">WorkBoard</span>
-                </div>
+                <img :src="image" alt="Logo" class="logo-image" />
                 <div class="project-name-badge">
                     {{ projectName }}
                 </div>
@@ -47,13 +44,6 @@
                 <!-- Stats -->
                 <button class="header-btn" @click="ui.openStats()" data-tooltip="Statistiken">
                     📊
-                </button>
-
-                <!-- AI Panel -->
-                <button class="header-btn ai-btn" :class="{ 'ai-btn--active': ui.aiEvents.length > 0 }"
-                    @click="ui.openAiPanel()" data-tooltip="KI-Aktivität">
-                    <span class="ai-icon">🤖</span>
-                    <span v-if="ui.aiEvents.length" class="ai-badge">{{ Math.min(ui.aiEvents.length, 99) }}</span>
                 </button>
 
                 <!-- Add Column -->
@@ -113,8 +103,6 @@
             @update:model-value="ui.closeModal()" />
 
         <BoardStats v-if="ui.activeModal === 'stats'" :model-value="true" @update:model-value="ui.closeModal()" />
-
-        <AiPanel v-if="ui.activeModal === 'ai'" :model-value="true" @update:model-value="ui.closeModal()" />
     </div>
 </template>
 
@@ -125,12 +113,11 @@ import type { Column } from '@/types'
 import type { Priority } from '@/types'
 import { useBoardStore } from '@/stores/board'
 import { useUiStore } from '@/stores/ui'
-import { priorityColor } from '@/utils/helpers'
 import KanbanColumn from './KanbanColumn.vue'
 import TicketModal from '@/components/editor/TicketModal.vue'
 import ColumnModal from '@/components/editor/ColumnModal.vue'
 import BoardStats from './BoardStats.vue'
-import AiPanel from '@/components/ai/AiPanel.vue'
+import image from "@/images/logo-kanban.png"
 
 const board = useBoardStore()
 const ui = useUiStore()
@@ -224,30 +211,6 @@ onMounted(() => board.fetchBoard())
     align-items: center;
     gap: 1rem;
     flex-shrink: 0;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 700;
-    font-size: 1.0625rem;
-    letter-spacing: -0.02em;
-}
-
-.logo-icon {
-    font-size: 1.3rem;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.logo-text {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .project-name-badge {
@@ -415,28 +378,6 @@ onMounted(() => board.fetchBoard())
     border-color: rgba(99, 102, 241, 0.5);
 }
 
-/* AI button */
-.ai-btn {
-    position: relative;
-}
-
-.ai-badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.625rem;
-    font-weight: 700;
-    min-width: 16px;
-    height: 16px;
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 3px;
-}
-
 /* ── Filter bar ─────────────────────────────────────────────────────── */
 .filter-bar {
     display: flex;
@@ -560,5 +501,9 @@ onMounted(() => board.fetchBoard())
 .add-col-icon {
     font-size: 1.5rem;
     line-height: 1;
+}
+
+.logo-image {
+    width: 130px;
 }
 </style>
