@@ -7,30 +7,21 @@ export function useKeyboard() {
   const board = useBoardStore()
 
   function onKeydown(e: KeyboardEvent) {
-    // Don't trigger shortcuts when typing in inputs
     const target = e.target as HTMLElement
     if (['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return
     if (target.isContentEditable) return
 
+    if (!e.ctrlKey && !e.metaKey) return
+
     switch (e.key.toLowerCase()) {
       case 'n':
-        // New ticket — open in first column if available
         if (!ui.activeModal && board.sortedColumns.length > 0) {
           e.preventDefault()
           ui.openTicketCreate(board.sortedColumns[0]!.id)
         }
         break
 
-      case 'c':
-        // New column
-        if (!ui.activeModal) {
-          e.preventDefault()
-          ui.openColumnCreate()
-        }
-        break
-
       case 'd':
-        // Toggle dark/light mode
         if (!ui.activeModal) {
           e.preventDefault()
           ui.toggleTheme()
@@ -38,7 +29,6 @@ export function useKeyboard() {
         break
 
       case 's':
-        // Statistics
         if (!ui.activeModal) {
           e.preventDefault()
           ui.openStats()
@@ -46,20 +36,16 @@ export function useKeyboard() {
         break
 
       case '/':
-        // AI Panel
         if (!ui.activeModal) {
           e.preventDefault()
           ui.openAiPanel()
         }
         break
+    }
 
-      case 'escape':
-        // Close any open modal
-        if (ui.activeModal) {
-          e.preventDefault()
-          ui.closeModal()
-        }
-        break
+    if (e.key === 'Escape' && ui.activeModal) {
+      e.preventDefault()
+      ui.closeModal()
     }
   }
 

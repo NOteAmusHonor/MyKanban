@@ -6,7 +6,6 @@
   <div class="shortcuts-hint" aria-hidden="true">
     <div class="shortcuts-list">
       <span><kbd>N</kbd> Ticket</span>
-      <span><kbd>C</kbd> Spalte</span>
       <span><kbd>D</kbd> Theme</span>
       <span><kbd>S</kbd> Stats</span>
       <span><kbd>/</kbd> KI</span>
