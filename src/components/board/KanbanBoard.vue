@@ -4,9 +4,6 @@
         <header class="board-header glass">
             <div class="header-left">
                 <img :src="image" alt="Logo" class="logo-image" />
-                <div class="project-name-badge">
-                    {{ projectName }}
-                </div>
                 <div class="board-name-wrap">
                     <h1 v-if="!editingName" class="board-name" @click="startNameEdit" :title="'Board umbenennen'">
                         {{ board.board.name }}
@@ -211,21 +208,6 @@ onMounted(() => board.fetchBoard())
     align-items: center;
     gap: 1rem;
     flex-shrink: 0;
-}
-
-.project-name-badge {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-full);
-    padding: 0.2rem 0.65rem;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
-    max-width: 180px;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .board-name {
