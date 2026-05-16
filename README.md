@@ -5,6 +5,13 @@ Läuft auf **Port 3737** – einfach URL öffnen, fertig.
 
 ---
 
+## Kanban Board ins Projekt Installieren
+
+npm install git+ssh://git@github.com:NOteAmusHonor/MyKanban.git
+
+ "scripts": {
+    "kanban": "mykanban",
+
 ## Schnellstart
 
 ### 1. Abhängigkeiten installieren
