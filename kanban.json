@@ -47,10 +47,7 @@
       "title": "Test Ticket",
       "description": "Dies ist ein **Test Ticket** zum Ausprobieren der Kanban-Funktionen.\n\n- Drag & Drop testen\n- Priorität ändern\n- Labels hinzufügen",
       "priority": "medium",
-      "labels": [
-        "test",
-        "demo"
-      ],
+      "labels": ["test", "demo"],
       "ticketNumber": 4242,
       "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z",
@@ -62,10 +59,7 @@
       "title": "Authentifizierung implementieren",
       "description": "Login- und Registrierungsflow mit JWT-Tokens umsetzen.\n\n- Login-Formular\n- Token-Refresh\n- Logout",
       "priority": "high",
-      "labels": [
-        "backend",
-        "auth"
-      ],
+      "labels": ["backend", "auth"],
       "ticketNumber": 1101,
       "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z",
@@ -77,10 +71,7 @@
       "title": "Dark Mode verfeinern",
       "description": "Farb-Tokens für den Dark Mode überprüfen und Kontraste verbessern.",
       "priority": "low",
-      "labels": [
-        "design",
-        "ui"
-      ],
+      "labels": ["design", "ui"],
       "ticketNumber": 2233,
       "order": 2,
       "createdAt": "2026-05-25T12:00:00.000Z",
@@ -92,10 +83,7 @@
       "title": "E-Mail-Benachrichtigungen einrichten",
       "description": "Nutzer sollen bei Ticket-Zuweisung eine E-Mail erhalten.",
       "priority": "medium",
-      "labels": [
-        "backend",
-        "notifications"
-      ],
+      "labels": ["backend", "notifications"],
       "ticketNumber": 3344,
       "order": 4,
       "createdAt": "2026-05-25T12:00:00.000Z",
@@ -107,9 +95,7 @@
       "title": "Performance-Audit durchführen",
       "description": "Lighthouse-Analyse und Core Web Vitals optimieren.",
       "priority": "low",
-      "labels": [
-        "performance"
-      ],
+      "labels": ["performance"],
       "ticketNumber": 4455,
       "order": 6,
       "createdAt": "2026-05-25T12:00:00.000Z",
@@ -121,10 +107,7 @@
       "title": "Datenbankschema migrieren",
       "description": "Migration von v1 auf v2 Schema durchführen.\n\n```sql\nALTER TABLE tickets ADD COLUMN assignee_id INT;\n```",
       "priority": "high",
-      "labels": [
-        "backend",
-        "database"
-      ],
+      "labels": ["backend", "database"],
       "ticketNumber": 5566,
       "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -135,10 +118,7 @@
       "title": "Ticket-Export als CSV",
       "description": "Alle Tickets eines Boards als CSV-Datei exportieren.",
       "priority": "medium",
-      "labels": [
-        "feature",
-        "export"
-      ],
+      "labels": ["feature", "export"],
       "ticketNumber": 6677,
       "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -149,9 +129,7 @@
       "title": "Unit Tests für Board-Store schreiben",
       "description": "Pinia-Store `useBoardStore` mit Vitest abdecken.",
       "priority": "medium",
-      "labels": [
-        "testing"
-      ],
+      "labels": ["testing"],
       "ticketNumber": 7788,
       "order": 3,
       "createdAt": "2026-05-25T12:00:00.000Z",
@@ -163,10 +141,7 @@
       "title": "Keyboard-Shortcuts dokumentieren",
       "description": "Alle Tastenkürzel in einer Hilfe-Übersicht anzeigen (z. B. `?`-Taste).",
       "priority": "low",
-      "labels": [
-        "ux",
-        "docs"
-      ],
+      "labels": ["ux", "docs"],
       "ticketNumber": 8899,
       "order": 5,
       "createdAt": "2026-05-25T12:00:00.000Z",
@@ -178,10 +153,7 @@
       "title": "Mehrsprachigkeit (i18n) vorbereiten",
       "description": "vue-i18n einrichten und Strings externalisieren.",
       "priority": "low",
-      "labels": [
-        "i18n",
-        "feature"
-      ],
+      "labels": ["i18n", "feature"],
       "ticketNumber": 1234,
       "order": 4,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -192,10 +164,7 @@
       "title": "Drag & Drop verbessern",
       "description": "Animationen beim Verschieben von Tickets und Spalten verfeinern.",
       "priority": "high",
-      "labels": [
-        "ui",
-        "ux"
-      ],
+      "labels": ["ui", "ux"],
       "ticketNumber": 2345,
       "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -206,10 +175,7 @@
       "title": "REST API absichern",
       "description": "Rate-Limiting und Input-Validierung für alle Endpunkte implementieren.",
       "priority": "high",
-      "labels": [
-        "backend",
-        "security"
-      ],
+      "labels": ["backend", "security"],
       "ticketNumber": 3456,
       "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -220,9 +186,7 @@
       "title": "Ticket-Kommentare Feature",
       "description": "Kommentarfunktion pro Ticket mit Markdown-Unterstützung.",
       "priority": "medium",
-      "labels": [
-        "feature"
-      ],
+      "labels": ["feature"],
       "ticketNumber": 4567,
       "order": 2,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -233,10 +197,7 @@
       "title": "WebSocket-Reconnect Logik",
       "description": "Automatisches Wiederverbinden bei Verbindungsabbruch mit exponential backoff.",
       "priority": "medium",
-      "labels": [
-        "backend",
-        "websocket"
-      ],
+      "labels": ["backend", "websocket"],
       "ticketNumber": 5678,
       "order": 3,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -247,10 +208,7 @@
       "title": "Onboarding-Tour implementieren",
       "description": "Neue Nutzer durch die wichtigsten Features führen.",
       "priority": "medium",
-      "labels": [
-        "ux",
-        "feature"
-      ],
+      "labels": ["ux", "feature"],
       "ticketNumber": 6789,
       "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -261,10 +219,7 @@
       "title": "Label-Verwaltung ausbauen",
       "description": "Eigene Labels erstellen, umbenennen und löschen.",
       "priority": "low",
-      "labels": [
-        "feature",
-        "ui"
-      ],
+      "labels": ["feature", "ui"],
       "ticketNumber": 7890,
       "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -275,9 +230,7 @@
       "title": "Fehlerseiten gestalten",
       "description": "404- und 500-Seiten mit passendem Design versehen.",
       "priority": "low",
-      "labels": [
-        "design"
-      ],
+      "labels": ["design"],
       "ticketNumber": 8901,
       "order": 2,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -288,9 +241,7 @@
       "title": "Projekt-Setup abschließen",
       "description": "Vite, Vue 3, Pinia, TypeScript und ESLint konfiguriert.",
       "priority": "high",
-      "labels": [
-        "setup"
-      ],
+      "labels": ["setup"],
       "ticketNumber": 9012,
       "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -301,10 +252,7 @@
       "title": "Grundlegendes Board-Layout",
       "description": "Spalten und Ticket-Karten mit Drag & Drop Basis-Implementierung.",
       "priority": "high",
-      "labels": [
-        "ui",
-        "feature"
-      ],
+      "labels": ["ui", "feature"],
       "ticketNumber": 1357,
       "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z"
@@ -315,10 +263,7 @@
       "title": "kanban.json Schema definieren",
       "description": "JSON-Schema für Validierung und AI-Unterstützung erstellt.",
       "priority": "medium",
-      "labels": [
-        "docs",
-        "backend"
-      ],
+      "labels": ["docs", "backend"],
       "ticketNumber": 2468,
       "order": 2,
       "createdAt": "2026-05-25T12:00:00.000Z"
