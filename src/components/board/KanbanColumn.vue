@@ -172,8 +172,8 @@ async function onDragChange(event: {
     font-weight: 600;
     padding: 1px 7px;
     border-radius: var(--radius-full);
-    background: var(--surface-elevated);
-    color: var(--text-secondary);
+    background: var(--surface);
+    color: var(--text-tertiary);
     min-width: 20px;
     text-align: center;
     font-variant-numeric: tabular-nums;
