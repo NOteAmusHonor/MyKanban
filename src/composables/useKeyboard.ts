@@ -34,13 +34,6 @@ export function useKeyboard() {
           ui.openStats()
         }
         break
-
-      case '/':
-        if (!ui.activeModal) {
-          e.preventDefault()
-          ui.openAiPanel()
-        }
-        break
     }
 
     if (e.key === 'Escape' && ui.activeModal) {

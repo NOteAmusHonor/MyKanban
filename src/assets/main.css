@@ -587,6 +587,16 @@ select {
   transform: translateX(-50%) translateY(0);
 }
 
+/* Tooltip below for column action buttons (parent column has clipped overflow above) */
+.column-actions [data-tooltip]::after {
+  bottom: auto;
+  top: calc(100% + 8px);
+  transform: translateX(-50%) translateY(-4px);
+}
+.column-actions [data-tooltip]:hover::after {
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ---------- Stat Bar ---------- */
 .stat-bar-wrap {
   background: var(--surface);

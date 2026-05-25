@@ -6,7 +6,6 @@
                 <div class="column-title-row">
                     <span class="column-dot" :style="{ background: column.color }" />
                     <span class="column-title">{{ column.title }}</span>
-                    <span class="column-count">{{ columnTickets.length }}</span>
                     <div class="column-actions">
                         <button class="col-btn" @click.stop="ui.openTicketCreate(column.id)"
                             data-tooltip="Ticket hinzufügen" aria-label="Ticket hinzufügen">
@@ -17,6 +16,7 @@
                             <Icon name="more" :size="16" />
                         </button>
                     </div>
+                    <span class="column-count">{{ columnTickets.length }}</span>
                 </div>
             </div>
 
@@ -127,7 +127,7 @@ async function onDragChange(event: {
     height: 100%;
     min-height: 0;
     max-height: 100%;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--shadow-sm);
 }
 

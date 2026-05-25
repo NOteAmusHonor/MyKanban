@@ -66,15 +66,6 @@
                     <Icon name="chart" :size="16" />
                 </button>
 
-                <!-- AI Panel -->
-                <button class="header-btn ai-btn" @click="ui.openAiPanel()" data-tooltip="KI-Aktivität"
-                    aria-label="KI-Aktivität">
-                    <Icon name="sparkles" :size="16" />
-                    <span v-if="ui.aiEvents.length" class="ai-badge">
-                        {{ Math.min(ui.aiEvents.length, 99) }}
-                    </span>
-                </button>
-
                 <!-- Theme toggle -->
                 <button class="header-btn" @click="ui.toggleTheme()"
                     :data-tooltip="ui.isDark ? 'Helles Erscheinungsbild' : 'Dunkles Erscheinungsbild'"
@@ -465,28 +456,6 @@ onMounted(() => board.fetchBoard())
 .header-btn--primary:active {
     background: var(--accent-pressed);
     transform: scale(0.96);
-}
-
-/* AI button badge */
-.ai-btn { position: relative; }
-
-.ai-badge {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    background: var(--priority-urgent);
-    color: #fff;
-    font-size: 0.625rem;
-    font-weight: 700;
-    min-width: 16px;
-    height: 16px;
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 4px;
-    border: 1.5px solid var(--bg-canvas);
-    line-height: 1;
 }
 
 /* ── Filter Bar ──────────────────────────────────────────────────── */

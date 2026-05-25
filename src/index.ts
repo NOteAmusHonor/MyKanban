@@ -8,7 +8,6 @@ export { default as KanbanTicket } from '@/components/board/KanbanTicket.vue'
 export { default as BoardStats } from '@/components/board/BoardStats.vue'
 export { default as TicketModal } from '@/components/editor/TicketModal.vue'
 export { default as ColumnModal } from '@/components/editor/ColumnModal.vue'
-export { default as AiPanel } from '@/components/ai/AiPanel.vue'
 
 export { useBoardStore } from '@/stores/board'
 export { useUiStore } from '@/stores/ui'
