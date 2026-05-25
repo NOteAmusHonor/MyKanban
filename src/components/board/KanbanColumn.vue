@@ -137,6 +137,7 @@ async function onDragChange(event: {
     flex-shrink: 0;
     cursor: grab;
     user-select: none;
+    background: transparent;
 }
 
 .column-header:active {

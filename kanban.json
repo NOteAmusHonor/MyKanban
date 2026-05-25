@@ -2,7 +2,7 @@
   "meta": {
     "version": "1.0.0",
     "createdAt": "2026-04-09T21:20:56.250Z",
-    "lastModified": "2026-05-25T12:10:24.497Z"
+    "lastModified": "2026-05-25T12:27:26.079Z"
   },
   "board": {
     "id": "board-1",
@@ -13,13 +13,13 @@
       "id": "col-backlog",
       "title": "Backlog",
       "order": 0,
-      "color": "#64748b"
+      "color": "#1957ae"
     },
     {
       "id": "col-todo",
       "title": "Zu erledigen",
       "order": 1,
-      "color": "#6366f1"
+      "color": "#ff3b30"
     },
     {
       "id": "col-inprogress",
@@ -32,12 +32,6 @@
       "title": "Review",
       "order": 3,
       "color": "#a855f7"
-    },
-    {
-      "id": "col-done",
-      "title": "Erledigt",
-      "order": 4,
-      "color": "#22c55e"
     }
   ],
   "tickets": [
@@ -285,47 +279,6 @@
       "order": 2,
       "createdAt": "2026-05-25T12:00:00.000Z",
       "updatedAt": "2026-05-25T12:10:24.497Z"
-    },
-    {
-      "id": "ticket-t18",
-      "columnId": "col-done",
-      "title": "Projekt-Setup abschließen",
-      "description": "Vite, Vue 3, Pinia, TypeScript und ESLint konfiguriert.",
-      "priority": "high",
-      "labels": [
-        "setup"
-      ],
-      "ticketNumber": 9012,
-      "order": 0,
-      "createdAt": "2026-05-25T12:00:00.000Z"
-    },
-    {
-      "id": "ticket-t19",
-      "columnId": "col-done",
-      "title": "Grundlegendes Board-Layout",
-      "description": "Spalten und Ticket-Karten mit Drag & Drop Basis-Implementierung.",
-      "priority": "high",
-      "labels": [
-        "ui",
-        "feature"
-      ],
-      "ticketNumber": 1357,
-      "order": 1,
-      "createdAt": "2026-05-25T12:00:00.000Z"
-    },
-    {
-      "id": "ticket-t20",
-      "columnId": "col-done",
-      "title": "kanban.json Schema definieren",
-      "description": "JSON-Schema für Validierung und AI-Unterstützung erstellt.",
-      "priority": "medium",
-      "labels": [
-        "docs",
-        "backend"
-      ],
-      "ticketNumber": 2468,
-      "order": 2,
-      "createdAt": "2026-05-25T12:00:00.000Z"
     }
   ]
 }
