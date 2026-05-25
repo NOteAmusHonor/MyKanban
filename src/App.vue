@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <RouterView />
   <Toast />
 
@@ -11,25 +11,23 @@
       <span><kbd>/</kbd> KI</span>
       <span><kbd>Esc</kbd> Schließen</span>
     </div>
-    <span class="shortcuts-trigger">⌨</span>
+    <span class="shortcuts-trigger">
+      <Icon name="keyboard" :size="14" />
+    </span>
   </div>
 </template>
 
 <script setup lang="ts">
 import Toast from '@/components/ui/Toast.vue'
+import Icon from '@/components/ui/Icon.vue'
 import { useKeyboard } from '@/composables/useKeyboard'
-import { useUiStore } from '@/stores/ui'
 
 useKeyboard()
-const ui = useUiStore()
 </script>
 
 <style>
-/* Import global design system */
+/* Apple-inspired design system */
 @import '@/assets/main.css';
-
-/* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 </style>
 
 <style scoped>
@@ -45,36 +43,44 @@ const ui = useUiStore()
 }
 
 .shortcuts-trigger {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
-  background: var(--surface-elevated);
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  background: var(--material-thick);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
   cursor: default;
-  color: var(--text-muted);
-  transition: all var(--transition-fast);
+  color: var(--text-tertiary);
+  box-shadow: var(--shadow-sm);
+  transition: color var(--transition-fast);
+}
+
+.shortcuts-hint:hover .shortcuts-trigger {
+  color: var(--text-primary);
 }
 
 .shortcuts-list {
   display: flex;
-  gap: 0.75rem;
-  background: var(--surface-elevated);
+  gap: 0.875rem;
+  background: var(--material-thick);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 0.5rem 0.875rem;
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
   opacity: 0;
-  transform: translateX(8px);
+  transform: translateX(6px);
   transition: all var(--transition-base);
   pointer-events: none;
-  backdrop-filter: blur(12px);
   margin-right: 0.5rem;
   white-space: nowrap;
+  box-shadow: var(--shadow-md);
 }
 
 .shortcuts-hint:hover .shortcuts-list {
@@ -84,13 +90,14 @@ const ui = useUiStore()
 
 kbd {
   display: inline-block;
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: var(--surface);
-  border: 1px solid var(--border-hover);
-  font-family: 'SF Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--text-accent);
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-primary);
   margin-right: 3px;
 }
 </style>

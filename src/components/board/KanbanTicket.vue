@@ -1,9 +1,10 @@
 <template>
-    <article :class="['ticket-card', `ticket-card--${ticket.priority}`, { 'ticket-card--filtered': isFiltered }]"
-        @click="ui.openTicketEdit(ticket)" draggable="false" role="button" tabindex="0"
+    <article
+        :class="['ticket-card', `ticket-card--${ticket.priority}`, { 'ticket-card--filtered': isFiltered }]"
+        @click="ui.openTicketEdit(ticket)"
+        role="button"
+        tabindex="0"
         @keydown.enter="ui.openTicketEdit(ticket)">
-        <!-- Drag handle + priority accent bar -->
-        <div class="ticket-accent" :style="{ background: priorityColor(ticket.priority) }" />
 
         <!-- Header row -->
         <div class="ticket-header">
@@ -21,27 +22,28 @@
 
         <!-- Labels -->
         <div v-if="ticket.labels.length" class="ticket-labels">
-            <span v-for="label in ticket.labels" :key="label" class="tag">{{ label }}</span>
+            <span v-for="label in ticket.labels.slice(0, 4)" :key="label" class="tag">{{ label }}</span>
+            <span v-if="ticket.labels.length > 4" class="tag tag--muted">+{{ ticket.labels.length - 4 }}</span>
         </div>
 
         <!-- Footer -->
         <div class="ticket-footer">
             <span class="ticket-date">{{ formatDateRelative(ticket.createdAt) }}</span>
-            <span v-if="ticket.description.trim()" class="ticket-has-desc" title="Hat Beschreibung">
-                📝
+            <span v-if="ticket.description.trim()" class="ticket-meta" title="Hat Beschreibung">
+                <Icon name="edit" :size="11" />
             </span>
         </div>
     </article>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { Ticket } from '@/types'
-import { formatTicketId, priorityColor, formatDateRelative } from '@/utils/helpers'
+import { formatTicketId, formatDateRelative } from '@/utils/helpers'
 import { useUiStore } from '@/stores/ui'
 import Badge from '@/components/ui/Badge.vue'
+import Icon from '@/components/ui/Icon.vue'
 
-const props = defineProps<{ ticket: Ticket; isFiltered?: boolean }>()
+defineProps<{ ticket: Ticket; isFiltered?: boolean }>()
 const ui = useUiStore()
 
 function stripMarkdown(text: string): string {
@@ -53,7 +55,7 @@ function stripMarkdown(text: string): string {
         .replace(/\[(.+?)\]\(.+?\)/g, '$1')
         .replace(/\n+/g, ' ')
         .trim()
-        .slice(0, 100)
+        .slice(0, 120)
 }
 </script>
 
@@ -61,46 +63,58 @@ function stripMarkdown(text: string): string {
 .ticket-card {
     position: relative;
     flex-shrink: 0;
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--bg-canvas);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 0.875rem 0.875rem 0.75rem 1.125rem;
+    padding: 0.75rem 0.875rem;
     cursor: pointer;
     overflow: hidden;
     transition:
         background var(--transition-fast),
         border-color var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast);
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
     user-select: none;
+    box-shadow: var(--shadow-xs);
 }
 
+html.light .ticket-card {
+    background: #ffffff;
+}
+
+.ticket-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--priority-color, var(--accent));
+    opacity: 0.85;
+    transition: opacity var(--transition-fast);
+}
+
+.ticket-card--urgent { --priority-color: var(--priority-urgent); }
+.ticket-card--high   { --priority-color: var(--priority-high); }
+.ticket-card--medium { --priority-color: var(--priority-medium); }
+.ticket-card--low    { --priority-color: var(--priority-low); }
+
 .ticket-card:hover {
-    background: var(--surface-elevated);
     border-color: var(--border-hover);
     box-shadow: var(--shadow-md);
     transform: translateY(-1px);
 }
 
 .ticket-card:active {
-    transform: translateY(0) scale(0.98);
+    transform: translateY(0) scale(0.99);
+    transition-duration: 0.08s;
 }
 
 .ticket-card:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-}
-
-/* Priority accent bar on left */
-.ticket-accent {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    border-radius: 3px 0 0 3px;
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    border-color: var(--accent);
 }
 
 .ticket-header {
@@ -108,17 +122,19 @@ function stripMarkdown(text: string): string {
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.375rem;
 }
 
 .ticket-title {
-    font-size: 0.9375rem;
-    font-weight: 500;
+    font-size: 0.875rem;
+    font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.4;
-    margin-bottom: 0.375rem;
+    line-height: 1.32;
+    letter-spacing: -0.012em;
+    margin: 0 0 0.375rem 0;
     display: -webkit-box;
     line-clamp: 2;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -126,10 +142,11 @@ function stripMarkdown(text: string): string {
 .ticket-desc {
     font-size: 0.8125rem;
     color: var(--text-secondary);
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
+    line-height: 1.45;
+    margin: 0 0 0.5rem 0;
     display: -webkit-box;
     line-clamp: 2;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -141,26 +158,34 @@ function stripMarkdown(text: string): string {
     margin-bottom: 0.5rem;
 }
 
+.tag--muted {
+    color: var(--text-tertiary);
+    background: var(--surface);
+}
+
 .ticket-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
+    margin-top: 0.125rem;
 }
 
 .ticket-date {
-    font-size: 0.72rem;
+    font-size: 0.6875rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.ticket-meta {
+    display: inline-flex;
+    align-items: center;
     color: var(--text-muted);
 }
 
-.ticket-has-desc {
-    font-size: 0.75rem;
-    opacity: 0.6;
-}
-
-/* Filtered out */
 .ticket-card--filtered {
-    opacity: 0.3;
+    opacity: 0.28;
     pointer-events: none;
+    transform: scale(0.985);
 }
 </style>

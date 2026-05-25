@@ -4,12 +4,11 @@
             <TransitionGroup name="toast">
                 <div v-for="t in uiStore.toasts" :key="t.id"
                     :class="['toast', `toast--${t.type}`, { 'toast--leaving': t.leaving }]"
-                    @click="uiStore.removeToast(t.id)">
-                    <span class="toast__icon">{{ icons[t.type] }}</span>
+                    @click="uiStore.removeToast(t.id)" role="status">
+                    <span :class="['toast__icon', `toast__icon--${t.type}`]">
+                        <Icon :name="iconFor(t.type)" :size="12" :stroke-width="2.6" />
+                    </span>
                     <span class="toast__msg">{{ t.message }}</span>
-                    <div class="toast__progress">
-                        <div class="toast__progress-bar" :style="{ animationDuration: `${t.duration ?? 3500}ms` }" />
-                    </div>
                 </div>
             </TransitionGroup>
         </div>
@@ -18,24 +17,30 @@
 
 <script setup lang="ts">
 import { useUiStore } from '@/stores/ui'
+import Icon from '@/components/ui/Icon.vue'
+
 const uiStore = useUiStore()
 
-const icons = {
-    success: '✓',
-    error: '✕',
-    info: 'ℹ',
-    warning: '⚠',
+function iconFor(type: string) {
+    switch (type) {
+        case 'success': return 'check'
+        case 'error':   return 'close'
+        case 'warning': return 'alert'
+        default:        return 'info'
+    }
 }
 </script>
 
 <style scoped>
 .toast-container {
     position: fixed;
-    top: 1.25rem;
-    right: 1.25rem;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 9999;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
     pointer-events: none;
 }
@@ -44,117 +49,55 @@ const icons = {
     display: flex;
     align-items: center;
     gap: 0.625rem;
-    padding: 0.75rem 1rem;
-    min-width: 260px;
-    max-width: 380px;
-    border-radius: var(--radius-lg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid;
+    padding: 0.625rem 1rem 0.625rem 0.625rem;
+    min-width: 240px;
+    max-width: 420px;
+    border-radius: var(--radius-full);
+    background: var(--material-thick);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 0.5px solid var(--border-hover);
     box-shadow: var(--shadow-lg);
     cursor: pointer;
     pointer-events: all;
-    position: relative;
-    overflow: hidden;
     font-size: 0.875rem;
     font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
 }
 
 .toast__icon {
-    font-size: 0.875rem;
     flex-shrink: 0;
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-weight: 700;
+    color: #fff;
 }
+
+.toast__icon--success { background: var(--priority-low); }
+.toast__icon--error   { background: var(--priority-urgent); }
+.toast__icon--warning { background: var(--priority-high); }
+.toast__icon--info    { background: var(--accent); }
 
 .toast__msg {
     flex: 1;
-    line-height: 1.4;
-}
-
-.toast--success {
-    background: rgba(34, 197, 94, 0.14);
-    border-color: rgba(34, 197, 94, 0.35);
-    color: #22c55e;
-}
-
-.toast--success .toast__icon {
-    background: rgba(34, 197, 94, 0.2);
-}
-
-.toast--error {
-    background: rgba(239, 68, 68, 0.14);
-    border-color: rgba(239, 68, 68, 0.35);
-    color: #ef4444;
-}
-
-.toast--error .toast__icon {
-    background: rgba(239, 68, 68, 0.2);
-}
-
-.toast--info {
-    background: rgba(99, 102, 241, 0.14);
-    border-color: rgba(99, 102, 241, 0.35);
-    color: var(--text-accent);
-}
-
-.toast--info .toast__icon {
-    background: rgba(99, 102, 241, 0.2);
-}
-
-.toast--warning {
-    background: rgba(249, 115, 22, 0.14);
-    border-color: rgba(249, 115, 22, 0.35);
-    color: #f97316;
-}
-
-.toast--warning .toast__icon {
-    background: rgba(249, 115, 22, 0.2);
-}
-
-/* Progress bar */
-.toast__progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.toast__progress-bar {
-    height: 100%;
-    background: currentColor;
-    opacity: 0.6;
-    animation: toast-progress linear forwards;
-    transform-origin: left;
-}
-
-@keyframes toast-progress {
-    from {
-        transform: scaleX(1);
-    }
-
-    to {
-        transform: scaleX(0);
-    }
+    line-height: 1.35;
 }
 
 /* TransitionGroup */
 .toast-enter-active {
-    animation: toastIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: toastIn 0.36s var(--ease-spring);
 }
 
 .toast-leave-active {
-    animation: toastOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: toastOut 0.28s var(--ease-smooth) forwards;
+    position: absolute;
 }
 
 .toast-move {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s var(--ease-spring);
 }
 </style>

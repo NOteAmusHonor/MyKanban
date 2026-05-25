@@ -17,14 +17,13 @@ defineProps<{ priority: Priority }>()
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 2px 10px 2px 7px;
+    padding: 2px 9px 2px 7px;
     border-radius: var(--radius-full);
-    font-size: 0.72rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    letter-spacing: -0.005em;
     white-space: nowrap;
-    border: 1px solid;
+    border: none;
 }
 
 .badge__dot {
@@ -35,43 +34,30 @@ defineProps<{ priority: Priority }>()
 }
 
 .badge--urgent {
-    color: #ef4444;
-    background: rgba(239, 68, 68, 0.12);
-    border-color: rgba(239, 68, 68, 0.3);
+    color: var(--priority-urgent);
+    background: color-mix(in srgb, var(--priority-urgent) 14%, transparent);
 }
 
-.badge--urgent .badge__dot {
-    background: #ef4444;
-    box-shadow: 0 0 4px rgba(239, 68, 68, 0.6);
-}
+.badge--urgent .badge__dot { background: var(--priority-urgent); }
 
 .badge--high {
-    color: #f97316;
-    background: rgba(249, 115, 22, 0.12);
-    border-color: rgba(249, 115, 22, 0.3);
+    color: var(--priority-high);
+    background: color-mix(in srgb, var(--priority-high) 14%, transparent);
 }
 
-.badge--high .badge__dot {
-    background: #f97316;
-}
+.badge--high .badge__dot { background: var(--priority-high); }
 
 .badge--medium {
-    color: #3b82f6;
-    background: rgba(59, 130, 246, 0.12);
-    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--priority-medium);
+    background: color-mix(in srgb, var(--priority-medium) 14%, transparent);
 }
 
-.badge--medium .badge__dot {
-    background: #3b82f6;
-}
+.badge--medium .badge__dot { background: var(--priority-medium); }
 
 .badge--low {
-    color: #22c55e;
-    background: rgba(34, 197, 94, 0.12);
-    border-color: rgba(34, 197, 94, 0.3);
+    color: var(--priority-low);
+    background: color-mix(in srgb, var(--priority-low) 14%, transparent);
 }
 
-.badge--low .badge__dot {
-    background: #22c55e;
-}
+.badge--low .badge__dot { background: var(--priority-low); }
 </style>

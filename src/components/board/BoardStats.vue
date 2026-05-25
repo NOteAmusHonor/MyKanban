@@ -1,6 +1,6 @@
 <template>
     <Modal :model-value="modelValue" @update:model-value="$emit('update:modelValue', $event)"
-        title="📊 Board Statistiken" size="md">
+        title="Statistiken" size="md">
         <div class="stats-body">
             <!-- Total -->
             <div class="stat-hero">
@@ -68,7 +68,6 @@
 <script setup lang="ts">
 import type { Priority } from '@/types'
 import { useBoardStore } from '@/stores/board'
-import { priorityColor, priorityLabel } from '@/utils/helpers'
 import Modal from '@/components/ui/Modal.vue'
 
 defineProps<{ modelValue: boolean }>()
@@ -77,10 +76,10 @@ defineEmits<{ 'update:modelValue': [v: boolean] }>()
 const board = useBoardStore()
 
 const priorityList: { value: Priority; label: string; color: string }[] = [
-    { value: 'urgent', label: 'Dringend', color: '#ef4444' },
-    { value: 'high', label: 'Hoch', color: '#f97316' },
-    { value: 'medium', label: 'Mittel', color: '#3b82f6' },
-    { value: 'low', label: 'Niedrig', color: '#22c55e' },
+    { value: 'urgent', label: 'Dringend', color: 'var(--priority-urgent)' },
+    { value: 'high',   label: 'Hoch',     color: 'var(--priority-high)' },
+    { value: 'medium', label: 'Mittel',   color: 'var(--priority-medium)' },
+    { value: 'low',    label: 'Niedrig',  color: 'var(--priority-low)' },
 ]
 
 function percentOf(n: number, total: number): string {
@@ -105,19 +104,18 @@ function percentOf(n: number, total: number): string {
 }
 
 .stat-hero-num {
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: 4rem;
+    font-weight: 700;
     letter-spacing: -0.04em;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
     line-height: 1;
+    font-variant-numeric: tabular-nums;
 }
 
 .stat-hero-label {
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    letter-spacing: -0.005em;
 }
 
 .stat-section {
@@ -127,10 +125,9 @@ function percentOf(n: number, total: number): string {
 .stat-section-title {
     font-size: 0.75rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
+    color: var(--text-tertiary);
     margin-bottom: 0.875rem;
+    letter-spacing: -0.005em;
 }
 
 .stat-list {
