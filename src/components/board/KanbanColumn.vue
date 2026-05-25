@@ -12,8 +12,8 @@
                             data-tooltip="Ticket hinzufügen" aria-label="Ticket hinzufügen">
                             <Icon name="plus" :size="15" />
                         </button>
-                        <button class="col-btn" @click.stop="ui.openColumnEdit(column)"
-                            data-tooltip="Spalte bearbeiten" aria-label="Spalte bearbeiten">
+                        <button class="col-btn" @click.stop="ui.openColumnEdit(column)" data-tooltip="Spalte bearbeiten"
+                            aria-label="Spalte bearbeiten">
                             <Icon name="more" :size="16" />
                         </button>
                     </div>
@@ -21,8 +21,8 @@
             </div>
 
             <!-- Ticket List -->
-            <draggable :list="localTickets" item-key="id" group="tickets" :animation="220"
-                ghost-class="ticket-ghost" drag-class="ticket-drag" class="column-tickets"
+            <draggable :list="localTickets" item-key="id" group="tickets" :animation="220" ghost-class="ticket-ghost"
+                drag-class="ticket-drag" class="column-tickets"
                 :class="{ 'column-tickets--empty': !columnTickets.length }" @change="onDragChange">
                 <template #item="{ element }">
                     <KanbanTicket :key="element.id" :ticket="element" :is-filtered="isTicketFiltered(element)" />
@@ -129,13 +129,6 @@ async function onDragChange(event: {
     max-height: 100%;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
-    transition:
-        box-shadow var(--transition-base),
-        transform var(--transition-base);
-}
-
-.column:hover {
-    box-shadow: var(--shadow-md);
 }
 
 /* Header (acts as drag handle) */
@@ -161,7 +154,6 @@ async function onDragChange(event: {
     height: 8px;
     border-radius: 50%;
     flex-shrink: 0;
-    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 0%, transparent);
 }
 
 .column-title {
