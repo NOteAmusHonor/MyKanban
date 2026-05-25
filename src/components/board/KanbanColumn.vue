@@ -172,7 +172,8 @@ async function onDragChange(event: {
     font-weight: 600;
     padding: 1px 7px;
     border-radius: var(--radius-full);
-    background: var(--surface);
+    background: transparent;
+    border: 1px solid var(--border);
     color: var(--text-tertiary);
     min-width: 20px;
     text-align: center;
