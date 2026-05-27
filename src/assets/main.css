@@ -275,35 +275,7 @@ a:hover { opacity: 0.75; }
 ::-webkit-scrollbar-corner      { background: transparent; }
 
 /* ---------- Material Utilities (vibrancy) ---------- */
-.material {
-  background: var(--material-regular);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid var(--border);
-}
-
 .material-thick {
-  background: var(--material-thick);
-  -webkit-backdrop-filter: blur(50px) saturate(200%);
-  backdrop-filter: blur(50px) saturate(200%);
-  border: 1px solid var(--border);
-}
-
-.material-chrome {
-  background: var(--material-chrome);
-  -webkit-backdrop-filter: blur(60px) saturate(200%);
-  backdrop-filter: blur(60px) saturate(200%);
-  border: 1px solid var(--border);
-}
-
-/* Legacy aliases (kept for backward compat) */
-.glass {
-  background: var(--material-regular);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid var(--border);
-}
-.glass-elevated {
   background: var(--material-thick);
   -webkit-backdrop-filter: blur(50px) saturate(200%);
   backdrop-filter: blur(50px) saturate(200%);
@@ -319,18 +291,9 @@ a:hover { opacity: 0.75; }
 }
 
 /* ---------- Animations ---------- */
-@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(12px) scale(0.985); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(100%); }
-  to   { opacity: 1; transform: translateX(0); }
 }
 @keyframes toastIn {
   from { opacity: 0; transform: translateY(-16px) scale(0.96); }
@@ -346,10 +309,6 @@ a:hover { opacity: 0.75; }
 @keyframes pulse-soft {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.55; }
-}
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
 }
 
 /* ---------- Form Elements (Apple style) ---------- */
@@ -537,17 +496,6 @@ select {
   margin-bottom: 0.25rem;
 }
 
-/* ---------- Skeleton ---------- */
-.skeleton {
-  background: linear-gradient(90deg,
-    var(--surface) 0%,
-    var(--surface-elevated) 50%,
-    var(--surface) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: var(--radius-sm);
-}
-
 /* ---------- Drag & Drop ---------- */
 .ticket-ghost {
   opacity: 0.5;
@@ -646,24 +594,6 @@ select {
 
 .fade-enter-active, .fade-leave-active { transition: opacity var(--transition-base); }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
-
-.slide-up-enter-active, .slide-up-leave-active { transition: all var(--transition-slow); }
-.slide-up-enter-from, .slide-up-leave-to { opacity: 0; transform: translateY(24px); }
-
-.list-enter-active, .list-leave-active {
-  transition: all 0.28s var(--ease-spring);
-}
-.list-enter-from {
-  opacity: 0;
-  transform: translateY(-6px) scale(0.98);
-}
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(6px) scale(0.98);
-}
-.list-move {
-  transition: transform 0.32s var(--ease-spring);
-}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
