@@ -1,0 +1,33 @@
+{
+  "name": "mykanban-landing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Landingpage für MyKanban — KI-getriebenes Kanban, komplett offline",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc -b",
+    "capture": "node scripts/capture-screenshots.mjs",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "motion-v": "^1.7.0",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.10.5",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "playwright": "^1.49.1",
+    "prettier": "^3.4.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.7",
+    "vue-tsc": "^2.2.0"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#08080B" />
+
+    <title>MyKanban — Dein Kanban-Board. Geführt von KI. Ohne Cloud.</title>
+    <meta
+      name="description"
+      content="Lokal. Open-Source. Eine JSON-Datei auf deiner Platte — und eine KI, die Tickets autonom erstellt, bearbeitet und abschließt. Du siehst zu, wie sich dein Board bewegt."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MyKanban — Geführt von KI. Ohne Cloud." />
+    <meta
+      property="og:description"
+      content="Lass deine KI Tickets autonom erstellen, bearbeiten und abschließen — 100 % lokal, ohne Cloud."
+    />
+    <meta property="og:image" content="/screenshots/01-board-overview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "MyKanban",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "description": "Local-first Kanban-Board mit autonomer KI-Integration. Komplett offline.",
+        "softwareRequirements": "Node.js 20+",
+        "url": "https://github.com/NOteAmusHonor/MyKanban"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
