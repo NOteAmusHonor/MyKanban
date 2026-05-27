@@ -30,7 +30,8 @@
         <template #footer>
             <div class="footer-left">
                 <button v-if="isEdit" type="button" class="btn btn--danger" @click="deleteColumn" :disabled="deleting">
-                    🗑 Löschen
+                    <Icon name="trash" :size="14" />
+                    Löschen
                 </button>
             </div>
             <div class="footer-right">
@@ -51,6 +52,7 @@ import { useBoardStore } from '@/stores/board'
 import { useUiStore } from '@/stores/ui'
 import { stringToColor } from '@/utils/helpers'
 import Modal from '@/components/ui/Modal.vue'
+import Icon from '@/components/ui/Icon.vue'
 
 defineProps<{ modelValue: boolean }>()
 defineEmits<{ 'update:modelValue': [v: boolean] }>()
@@ -60,7 +62,7 @@ const ui = useUiStore()
 
 const isEdit = computed(() => ui.columnModalData?.mode === 'edit')
 
-const form = ref({ title: '', color: '#6366f1' })
+const form = ref({ title: '', color: '#0a84ff' })
 const saving = ref(false)
 const deleting = ref(false)
 const nameInput = ref<HTMLInputElement | null>(null)
@@ -70,7 +72,7 @@ watch(() => ui.columnModalData, (d) => {
     if (d.mode === 'edit' && d.column) {
         form.value = { title: d.column.title, color: d.column.color }
     } else {
-        form.value = { title: '', color: '#6366f1' }
+        form.value = { title: '', color: '#0a84ff' }
     }
 }, { immediate: true })
 
@@ -82,11 +84,12 @@ watch(() => form.value.title, (t) => {
     if (t.trim()) form.value.color = stringToColor(t)
 })
 
+// Apple system colors palette
 const presetColors = [
-    '#6366f1', '#8b5cf6', '#a855f7', '#ec4899',
-    '#ef4444', '#f97316', '#f59e0b', '#eab308',
-    '#22c55e', '#10b981', '#14b8a6', '#06b6d4',
-    '#0ea5e9', '#3b82f6', '#64748b', '#78716c',
+    '#ff3b30', '#ff9500', '#ffcc00', '#34c759',
+    '#30d158', '#00c7be', '#32ade6', '#0a84ff',
+    '#5e5ce6', '#bf5af2', '#ff2d55', '#a2845e',
+    '#8e8e93', '#636366', '#48484a', '#1c1c1e',
 ]
 
 async function save() {
@@ -131,11 +134,10 @@ async function deleteColumn() {
 }
 
 .form-label {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: -0.005em;
 }
 
 .form-input {
@@ -151,47 +153,55 @@ async function deleteColumn() {
 .color-swatch {
     width: 100%;
     aspect-ratio: 1;
-    border-radius: var(--radius-sm);
-    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    border: none;
     cursor: pointer;
-    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    transition: all var(--transition-fast);
+    box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.18);
 }
 
 .color-swatch:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 .color-swatch.active {
-    border-color: #fff;
-    box-shadow: 0 0 0 2px var(--accent);
-    transform: scale(1.15);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 2px var(--surface-elevated), 0 0 0 4px var(--accent);
 }
 
 .custom-color-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.25rem;
+    gap: 0.625rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+}
+
+.custom-color-row .form-label {
+    flex: 1;
 }
 
 .color-input-native {
-    width: 36px;
+    width: 40px;
     height: 28px;
     padding: 0;
-    border: 1px solid var(--border);
+    border: 1px solid var(--separator);
     border-radius: var(--radius-sm);
     cursor: pointer;
     background: none;
 }
 
 .color-hex {
-    font-family: 'SF Mono', monospace;
-    font-size: 0.8125rem;
-    color: var(--text-muted);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
 }
 
 .color-preview {
-    height: 4px;
+    height: 6px;
     border-radius: var(--radius-full);
     transition: background var(--transition-base);
 }
@@ -202,42 +212,44 @@ async function deleteColumn() {
     align-items: center !important;
 }
 
-.footer-left {
-    flex: 1;
-}
-
+.footer-left { flex: 1; }
 .footer-right {
     display: flex;
-    gap: 0.625rem;
+    gap: 0.5rem;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 0.5rem 1rem;
+    gap: 6px;
+    padding: 0.5rem 1.125rem;
     border-radius: var(--radius-md);
     font-size: 0.875rem;
     font-weight: 500;
     font-family: inherit;
+    letter-spacing: -0.005em;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: none;
     transition: all var(--transition-fast);
 }
 
 .btn:disabled {
-    opacity: 0.45;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
+.btn:not(:disabled):active {
+    transform: scale(0.97);
+}
+
 .btn--primary {
-    background: var(--accent-gradient);
+    background: var(--accent);
     color: #fff;
-    box-shadow: 0 2px 8px var(--accent-glow);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
 }
 
 .btn--primary:not(:disabled):hover {
-    filter: brightness(1.1);
+    background: var(--accent-hover);
 }
 
 .btn--ghost {
@@ -246,17 +258,17 @@ async function deleteColumn() {
 }
 
 .btn--ghost:hover {
-    background: var(--surface);
+    background: var(--surface-elevated);
     color: var(--text-primary);
 }
 
 .btn--danger {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border-color: rgba(239, 68, 68, 0.3);
+    background: color-mix(in srgb, var(--priority-urgent) 12%, transparent);
+    color: var(--priority-urgent);
 }
 
-.btn--danger:hover {
-    background: rgba(239, 68, 68, 0.2);
+.btn--danger:not(:disabled):hover {
+    background: var(--priority-urgent);
+    color: #fff;
 }
 </style>

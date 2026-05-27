@@ -5,38 +5,57 @@ Läuft auf **Port 3737** – einfach URL öffnen, fertig.
 
 ---
 
-## Kanban Board ins Projekt Installieren
+## Installation in ein bestehendes Projekt
 
-npm install git+ssh://git@github.com:NOteAmusHonor/MyKanban.git
-
- "scripts": {
-    "kanban": "mykanban",
-
-## Schnellstart
-
-### 1. Abhängigkeiten installieren
+### 1. Paket installieren
 
 ```bash
-npm install
+npm install git+https://github.com/NOteAmusHonor/MyKanban.git
 ```
 
-### 2. Frontend bauen
+### 2. Script in `package.json` eintragen
 
-```bash
-npm run build
+```json
+{
+  "scripts": {
+    "kanban": "mykanban"
+  }
+}
 ```
 
 ### 3. Board starten
 
 ```bash
+npm run kanban
+```
+
+→ Öffnet automatisch `http://localhost:3737` im Browser.  
+→ Daten werden in **`kanban.json`** im Projektordner gespeichert (wird beim ersten Start erstellt).
+
+---
+
+## Dieses Repo lokal ausführen
+
+### 1. Abhängigkeiten installieren & Frontend bauen
+
+```bash
+npm install
+npm run build
+```
+
+### 2. Board starten
+
+```bash
 node bin/mykanban.mjs
+# oder
+npm start
 ```
 
 → Öffnet automatisch `http://localhost:3737` im Browser.
 
 ---
 
-## Entwicklung (ohne Build)
+## Entwicklung (Hot Reload)
 
 Zwei Terminals öffnen:
 
@@ -44,11 +63,11 @@ Zwei Terminals öffnen:
 # Terminal 1 – API-Server
 node server/index.mjs
 
-# Terminal 2 – Vue Dev-Server (Hot Reload)
+# Terminal 2 – Vue Dev-Server
 npm run dev
 ```
 
-→ Board läuft auf `http://localhost:5173` (API-Calls werden zu `:3737` weitergeleitet).
+→ Board läuft auf `http://localhost:5173`.
 
 ---
 

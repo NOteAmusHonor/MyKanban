@@ -2,8 +2,9 @@
     <Teleport to="body">
         <Transition name="backdrop">
             <div v-if="modelValue" class="modal-backdrop" @click.self="onBackdropClick">
-                <Transition name="modal">
-                    <div v-if="modelValue" :class="['modal-box', `modal-box--${size}`]" role="dialog" aria-modal="true">
+                <Transition name="modal" appear>
+                    <div v-if="modelValue" :class="['modal-box', `modal-box--${size}`]"
+                        role="dialog" aria-modal="true">
                         <!-- Header -->
                         <div v-if="title || $slots.header" class="modal-header">
                             <slot name="header">
@@ -11,7 +12,7 @@
                             </slot>
                             <button class="modal-close" @click="$emit('update:modelValue', false)"
                                 aria-label="Schließen">
-                                ✕
+                                <Icon name="close" :size="12" :stroke-width="2.4" />
                             </button>
                         </div>
 
@@ -33,6 +34,7 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch } from 'vue'
+import Icon from '@/components/ui/Icon.vue'
 
 const props = withDefaults(
     defineProps<{
@@ -50,12 +52,10 @@ function onBackdropClick() {
     if (props.closeOnBackdrop) emit('update:modelValue', false)
 }
 
-// Keyboard
 function onKeydown(e: KeyboardEvent) {
     if (e.key === 'Escape' && props.modelValue) emit('update:modelValue', false)
 }
 
-// Scroll lock
 watch(() => props.modelValue, (open) => {
     document.body.style.overflow = open ? 'hidden' : ''
 })
@@ -76,17 +76,21 @@ onUnmounted(() => {
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.45);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+}
+
+html.light .modal-backdrop {
+    background: rgba(0, 0, 0, 0.18);
 }
 
 .modal-box {
     position: relative;
     background: var(--surface-modal);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid var(--border-hover);
+    -webkit-backdrop-filter: blur(60px) saturate(200%);
+    backdrop-filter: blur(60px) saturate(200%);
+    border: 0.5px solid var(--border-hover);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-xl);
     display: flex;
@@ -96,35 +100,25 @@ onUnmounted(() => {
     width: 100%;
 }
 
-.modal-box--sm {
-    max-width: 400px;
-}
-
-.modal-box--md {
-    max-width: 560px;
-}
-
-.modal-box--lg {
-    max-width: 720px;
-}
-
-.modal-box--xl {
-    max-width: 920px;
-}
+.modal-box--sm { max-width: 420px; }
+.modal-box--md { max-width: 560px; }
+.modal-box--lg { max-width: 720px; }
+.modal-box--xl { max-width: 920px; }
 
 .modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid var(--border);
+    padding: 1.125rem 1.375rem;
+    border-bottom: 1px solid var(--separator);
     flex-shrink: 0;
 }
 
 .modal-title {
-    font-size: 1.0625rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
+    letter-spacing: -0.018em;
     margin: 0;
 }
 
@@ -132,55 +126,55 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: var(--radius-sm);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
     border: none;
-    background: var(--surface);
+    background: var(--surface-elevated);
     color: var(--text-secondary);
-    font-size: 0.8125rem;
     cursor: pointer;
     transition: all var(--transition-fast);
     flex-shrink: 0;
+    padding: 0;
 }
 
 .modal-close:hover {
-    background: var(--surface-elevated);
+    background: var(--surface-hover);
     color: var(--text-primary);
 }
 
+.modal-close:active {
+    transform: scale(0.92);
+}
+
 .modal-body {
-    padding: 1.5rem;
+    padding: 1.375rem;
     overflow-y: auto;
     flex: 1;
 }
 
 .modal-footer {
-    padding: 1rem 1.5rem;
-    border-top: 1px solid var(--border);
+    padding: 0.875rem 1.375rem;
+    border-top: 1px solid var(--separator);
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 0.75rem;
+    gap: 0.625rem;
     flex-shrink: 0;
 }
 
 /* Transitions */
 .backdrop-enter-active,
 .backdrop-leave-active {
-    transition: opacity 0.25s ease;
+    transition: opacity 0.22s var(--ease-smooth);
 }
-
 .backdrop-enter-from,
-.backdrop-leave-to {
-    opacity: 0;
-}
+.backdrop-leave-to { opacity: 0; }
 
 .modal-enter-active {
-    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideUp 0.34s var(--ease-spring);
 }
-
 .modal-leave-active {
-    animation: slideUp 0.2s cubic-bezier(0.4, 0, 0.2, 1) reverse;
+    animation: slideUp 0.22s var(--ease-spring) reverse;
 }
 </style>
