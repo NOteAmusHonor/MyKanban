@@ -122,8 +122,6 @@ async function onDragChange(event: {
 
 .column {
     background: var(--column-glass-bg);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    backdrop-filter: blur(40px) saturate(180%);
     border: 1px solid var(--column-glass-border);
     border-radius: var(--radius-lg);
     display: flex;
