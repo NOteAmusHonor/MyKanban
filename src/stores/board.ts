@@ -73,14 +73,12 @@ export const useBoardStore = defineStore('board', () => {
         board.value = data.board
         columns.value = data.columns
         tickets.value = data.tickets
-        ui.addAiEvent(msg.type, 'Board vollständig synchronisiert')
         break
       }
       case 'ticket-created': {
         const t = msg.payload as Ticket
         if (!tickets.value.find((x) => x.id === t.id)) {
           tickets.value.push(t)
-          ui.addAiEvent(msg.type, `Ticket TK-${t.ticketNumber} „${t.title}" erstellt`)
         }
         break
       }
@@ -89,7 +87,6 @@ export const useBoardStore = defineStore('board', () => {
         const idx = tickets.value.findIndex((x) => x.id === t.id)
         if (idx !== -1) {
           tickets.value[idx] = t
-          ui.addAiEvent(msg.type, `Ticket TK-${t.ticketNumber} aktualisiert`)
         }
         break
       }
@@ -97,8 +94,6 @@ export const useBoardStore = defineStore('board', () => {
         const { id } = msg.payload as { id: string }
         const idx = tickets.value.findIndex((x) => x.id === id)
         if (idx !== -1) {
-          const t = tickets.value[idx]
-          ui.addAiEvent(msg.type, `Ticket TK-${t?.ticketNumber} gelöscht`)
           tickets.value.splice(idx, 1)
         }
         break
@@ -107,7 +102,6 @@ export const useBoardStore = defineStore('board', () => {
         const c = msg.payload as Column
         if (!columns.value.find((x) => x.id === c.id)) {
           columns.value.push(c)
-          ui.addAiEvent(msg.type, `Spalte „${c.title}" erstellt`)
         }
         break
       }
@@ -116,16 +110,13 @@ export const useBoardStore = defineStore('board', () => {
         const idx = columns.value.findIndex((x) => x.id === c.id)
         if (idx !== -1) {
           columns.value[idx] = c
-          ui.addAiEvent(msg.type, `Spalte „${c.title}" aktualisiert`)
         }
         break
       }
       case 'column-deleted': {
         const { id } = msg.payload as { id: string }
-        const col = columns.value.find((x) => x.id === id)
         columns.value = columns.value.filter((x) => x.id !== id)
         tickets.value = tickets.value.filter((x) => x.columnId !== id)
-        ui.addAiEvent(msg.type, `Spalte „${col?.title ?? id}" gelöscht`)
         break
       }
       case 'board-meta-updated': {

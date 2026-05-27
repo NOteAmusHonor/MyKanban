@@ -5,8 +5,6 @@ import type {
   ModalType,
   TicketModalData,
   ColumnModalData,
-  AiEvent,
-  WsEventType,
 } from '@/types'
 import { generateId } from '@/utils/helpers'
 
@@ -57,10 +55,6 @@ export const useUiStore = defineStore('ui', () => {
     activeModal.value = 'stats'
   }
 
-  function openAiPanel() {
-    activeModal.value = 'ai'
-  }
-
   function closeModal() {
     activeModal.value = null
     ticketModalData.value = null
@@ -100,29 +94,6 @@ export const useUiStore = defineStore('ui', () => {
   const hasActiveFilters = () =>
     searchQuery.value !== '' || filterPriorities.value.length > 0 || filterLabels.value.length > 0
 
-  // ─── AI Events (from WebSocket external changes) ────────────────────────
-  const aiEvents = ref<AiEvent[]>([])
-
-  const wsEventLabels: Record<WsEventType, string> = {
-    'board-updated': 'Board synchronisiert',
-    'ticket-created': 'Ticket erstellt',
-    'ticket-updated': 'Ticket aktualisiert',
-    'ticket-deleted': 'Ticket gelöscht',
-    'column-created': 'Spalte erstellt',
-    'column-updated': 'Spalte aktualisiert',
-    'column-deleted': 'Spalte gelöscht',
-    'board-meta-updated': 'Board umbenannt',
-  }
-
-  function addAiEvent(type: WsEventType, description: string) {
-    aiEvents.value.unshift({
-      type,
-      description,
-      timestamp: new Date().toISOString(),
-    })
-    if (aiEvents.value.length > 100) aiEvents.value.pop()
-  }
-
   return {
     isDark,
     toggleTheme,
@@ -134,7 +105,6 @@ export const useUiStore = defineStore('ui', () => {
     openColumnCreate,
     openColumnEdit,
     openStats,
-    openAiPanel,
     closeModal,
     toasts,
     toast,
@@ -144,8 +114,5 @@ export const useUiStore = defineStore('ui', () => {
     filterLabels,
     clearFilters,
     hasActiveFilters,
-    aiEvents,
-    addAiEvent,
-    wsEventLabels,
   }
 })

@@ -18,7 +18,8 @@
                         <button v-for="p in priorities" :key="p.value" type="button"
                             :class="['priority-btn', { active: form.priority === p.value }]"
                             :style="{ '--p-color': p.color, '--p-bg': p.bg }" @click="form.priority = p.value">
-                            {{ p.icon }} {{ p.label }}
+                            <span class="p-dot" />
+                            {{ p.label }}
                         </button>
                     </div>
                 </div>
@@ -41,11 +42,11 @@
                     <div class="desc-tabs">
                         <button type="button" :class="['tab', { active: descTab === 'edit' }]"
                             @click="descTab = 'edit'">
-                            ✏️ Bearbeiten
+                            <Icon name="edit" :size="12" /> Bearbeiten
                         </button>
                         <button type="button" :class="['tab', { active: descTab === 'preview' }]"
                             @click="descTab = 'preview'">
-                            👁 Vorschau
+                            <Icon name="eye" :size="12" /> Vorschau
                         </button>
                     </div>
                 </div>
@@ -58,16 +59,19 @@
 
 - Listenpunkt 1
 - Listenpunkt 2" />
-                <div v-else class="markdown-preview desc-preview glass" v-html="renderedDescription" />
+                <div v-else class="markdown-preview desc-preview" v-html="renderedDescription" />
             </div>
 
             <!-- Labels -->
             <div class="form-group">
                 <label class="form-label">Labels</label>
-                <div class="labels-input-wrap glass">
+                <div class="labels-input-wrap">
                     <span v-for="label in form.labels" :key="label" class="tag">
                         {{ label }}
-                        <button type="button" class="tag-remove" @click="removeLabel(label)">✕</button>
+                        <button type="button" class="tag-remove" @click="removeLabel(label)"
+                            aria-label="Label entfernen">
+                            <Icon name="close" :size="9" :stroke-width="2.6" />
+                        </button>
                     </span>
                     <input v-model="labelInput" class="labels-input" placeholder="Label eingeben + Enter"
                         @keydown.enter.prevent="addLabel" @keydown.,.prevent="addLabel" />
@@ -78,8 +82,10 @@
 
         <template #footer>
             <div class="footer-left">
-                <button v-if="isEdit" type="button" class="btn btn--danger" @click="deleteTicket" :disabled="deleting">
-                    🗑 Löschen
+                <button v-if="isEdit" type="button" class="btn btn--danger" @click="deleteTicket"
+                    :disabled="deleting">
+                    <Icon name="trash" :size="14" />
+                    Löschen
                 </button>
             </div>
             <div class="footer-right">
@@ -101,8 +107,8 @@ import DOMPurify from 'dompurify'
 import type { Priority } from '@/types'
 import { useBoardStore } from '@/stores/board'
 import { useUiStore } from '@/stores/ui'
-import { priorityColor, priorityBg } from '@/utils/helpers'
 import Modal from '@/components/ui/Modal.vue'
+import Icon from '@/components/ui/Icon.vue'
 
 defineProps<{ modelValue: boolean }>()
 defineEmits<{ 'update:modelValue': [v: boolean] }>()
@@ -209,11 +215,11 @@ async function deleteTicket() {
 }
 
 // ─── Priority options ─────────────────────────────────────────────────────────
-const priorities: { value: Priority; label: string; icon: string; color: string; bg: string }[] = [
-    { value: 'urgent', label: 'Dringend', icon: '🔴', color: '#ef4444', bg: 'rgba(239,68,68,0.12)' },
-    { value: 'high', label: 'Hoch', icon: '🟠', color: '#f97316', bg: 'rgba(249,115,22,0.12)' },
-    { value: 'medium', label: 'Mittel', icon: '🔵', color: '#3b82f6', bg: 'rgba(59,130,246,0.12)' },
-    { value: 'low', label: 'Niedrig', icon: '🟢', color: '#22c55e', bg: 'rgba(34,197,94,0.12)' },
+const priorities: { value: Priority; label: string; color: string; bg: string }[] = [
+    { value: 'urgent', label: 'Dringend', color: 'var(--priority-urgent)', bg: 'color-mix(in srgb, var(--priority-urgent) 14%, transparent)' },
+    { value: 'high',   label: 'Hoch',     color: 'var(--priority-high)',   bg: 'color-mix(in srgb, var(--priority-high) 14%, transparent)' },
+    { value: 'medium', label: 'Mittel',   color: 'var(--priority-medium)', bg: 'color-mix(in srgb, var(--priority-medium) 14%, transparent)' },
+    { value: 'low',    label: 'Niedrig',  color: 'var(--priority-low)',    bg: 'color-mix(in srgb, var(--priority-low) 14%, transparent)' },
 ]
 </script>
 
@@ -237,11 +243,10 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
 }
 
 .form-label {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: -0.005em;
 }
 
 .form-input {
@@ -250,7 +255,7 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
 
 .form-hint {
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: var(--text-tertiary);
     margin-top: -0.25rem;
 }
 
@@ -264,8 +269,8 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
 .priority-btn {
     display: flex;
     align-items: center;
-    gap: 5px;
-    padding: 0.375rem 0.625rem;
+    gap: 7px;
+    padding: 0.5rem 0.75rem;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
     background: var(--surface);
@@ -275,18 +280,35 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
     cursor: pointer;
     transition: all var(--transition-fast);
     font-family: inherit;
+    letter-spacing: -0.005em;
+}
+
+.priority-btn .p-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--p-color);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
 }
 
 .priority-btn:hover {
-    border-color: var(--p-color);
-    color: var(--p-color);
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+}
+
+.priority-btn:hover .p-dot {
+    transform: scale(1.2);
 }
 
 .priority-btn.active {
     background: var(--p-bg);
-    border-color: var(--p-color);
+    border-color: color-mix(in srgb, var(--p-color) 50%, transparent);
     color: var(--p-color);
-    box-shadow: 0 0 8px color-mix(in srgb, var(--p-color) 30%, transparent);
+}
+
+.priority-btn.active .p-dot {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--p-color) 25%, transparent);
 }
 
 /* Description */
@@ -298,15 +320,21 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
 
 .desc-tabs {
     display: flex;
-    gap: 4px;
+    gap: 2px;
+    padding: 2px;
+    background: var(--input-bg);
+    border-radius: var(--radius-md);
 }
 
 .tab {
-    padding: 3px 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: none;
     background: transparent;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: 0.75rem;
     font-weight: 500;
     cursor: pointer;
@@ -314,22 +342,29 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
     font-family: inherit;
 }
 
+.tab:hover {
+    color: var(--text-primary);
+}
+
 .tab.active {
     background: var(--surface-elevated);
     color: var(--text-primary);
-    border-color: var(--border-hover);
+    box-shadow: var(--shadow-xs);
 }
 
 .desc-textarea {
-    min-height: 160px;
-    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-    font-size: 0.875rem;
+    min-height: 180px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.55;
 }
 
 .desc-preview {
-    min-height: 160px;
+    min-height: 180px;
     padding: 0.875rem 1rem;
     border-radius: var(--radius-md);
+    background: var(--surface);
+    border: 1px solid var(--separator);
 }
 
 /* Labels input */
@@ -339,16 +374,18 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
     gap: 5px;
     padding: 0.5rem 0.625rem;
     border-radius: var(--radius-md);
-    border: 1px solid var(--input-border);
-    min-height: 42px;
+    background: var(--input-bg);
+    border: 1px solid transparent;
+    min-height: 44px;
     align-items: center;
     cursor: text;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .labels-input-wrap:focus-within {
+    background: var(--input-bg-focus);
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--input-focus);
+    box-shadow: 0 0 0 4px var(--accent-glow);
 }
 
 .labels-input {
@@ -357,28 +394,33 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
     background: none;
     border: none;
     padding: 2px 4px;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--text-primary);
     outline: none;
     box-shadow: none !important;
+    width: auto;
 }
+
+.labels-input:focus,
+.labels-input:hover { background: none; }
 
 .tag-remove {
     background: none;
     border: none;
     cursor: pointer;
-    color: inherit;
-    opacity: 0.6;
-    font-size: 0.6875rem;
-    padding: 0;
-    margin-left: 3px;
+    color: var(--text-tertiary);
+    padding: 1px;
+    margin-left: 2px;
     line-height: 1;
     display: flex;
     align-items: center;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
 }
 
 .tag-remove:hover {
-    opacity: 1;
+    color: var(--text-primary);
+    background: var(--surface-hover);
 }
 
 /* Footer split */
@@ -387,43 +429,45 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
     align-items: center !important;
 }
 
-.footer-left {
-    flex: 1;
-}
-
+.footer-left { flex: 1; }
 .footer-right {
     display: flex;
-    gap: 0.625rem;
+    gap: 0.5rem;
 }
 
-/* Button styles (scoped) */
+/* Apple-style buttons */
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 0.5rem 1rem;
+    gap: 6px;
+    padding: 0.5rem 1.125rem;
     border-radius: var(--radius-md);
     font-size: 0.875rem;
     font-weight: 500;
     font-family: inherit;
+    letter-spacing: -0.005em;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: none;
     transition: all var(--transition-fast);
 }
 
 .btn:disabled {
-    opacity: 0.45;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
+.btn:not(:disabled):active {
+    transform: scale(0.97);
+}
+
 .btn--primary {
-    background: var(--accent-gradient);
+    background: var(--accent);
     color: #fff;
-    box-shadow: 0 2px 8px var(--accent-glow);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
 }
 
 .btn--primary:not(:disabled):hover {
-    filter: brightness(1.1);
+    background: var(--accent-hover);
 }
 
 .btn--ghost {
@@ -432,17 +476,17 @@ const priorities: { value: Priority; label: string; icon: string; color: string;
 }
 
 .btn--ghost:hover {
-    background: var(--surface);
+    background: var(--surface-elevated);
     color: var(--text-primary);
 }
 
 .btn--danger {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border-color: rgba(239, 68, 68, 0.3);
+    background: color-mix(in srgb, var(--priority-urgent) 12%, transparent);
+    color: var(--priority-urgent);
 }
 
-.btn--danger:hover {
-    background: rgba(239, 68, 68, 0.2);
+.btn--danger:not(:disabled):hover {
+    background: var(--priority-urgent);
+    color: #fff;
 }
 </style>

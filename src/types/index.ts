@@ -58,7 +58,6 @@ export type ModalType =
   | 'column-create'
   | 'column-edit'
   | 'stats'
-  | 'ai'
   | null
 
 export interface TicketModalData {
@@ -85,12 +84,6 @@ export type WsEventType =
 export interface WsEvent {
   type: WsEventType
   payload: unknown
-}
-
-export interface AiEvent {
-  type: WsEventType
-  description: string
-  timestamp: string
 }
 
 export interface FilterState {
