@@ -11,6 +11,12 @@ export function useKeyboard() {
     if (['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return
     if (target.isContentEditable) return
 
+    if (e.key === 'Escape' && ui.activeModal) {
+      e.preventDefault()
+      ui.closeModal()
+      return
+    }
+
     if (!e.ctrlKey && !e.metaKey) return
 
     switch (e.key.toLowerCase()) {
@@ -18,6 +24,13 @@ export function useKeyboard() {
         if (!ui.activeModal && board.sortedColumns.length > 0) {
           e.preventDefault()
           ui.openTicketCreate(board.sortedColumns[0]!.id)
+        }
+        break
+
+      case 'c':
+        if (!ui.activeModal) {
+          e.preventDefault()
+          ui.openColumnCreate()
         }
         break
 
@@ -34,11 +47,6 @@ export function useKeyboard() {
           ui.openStats()
         }
         break
-    }
-
-    if (e.key === 'Escape' && ui.activeModal) {
-      e.preventDefault()
-      ui.closeModal()
     }
   }
 
