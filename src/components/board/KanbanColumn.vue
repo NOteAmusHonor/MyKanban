@@ -1,6 +1,6 @@
 <template>
     <div class="column-wrap">
-        <div class="column material">
+        <div class="column">
             <!-- Column Header (drag handle) -->
             <div class="column-header">
                 <div class="column-title-row">
@@ -121,6 +121,10 @@ async function onDragChange(event: {
 }
 
 .column {
+    background: var(--column-glass-bg);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid var(--column-glass-border);
     border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
@@ -128,7 +132,12 @@ async function onDragChange(event: {
     min-height: 0;
     max-height: 100%;
     overflow: visible;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--column-glass-shadow);
+    transition: box-shadow var(--transition-base), border-color var(--transition-fast);
+}
+
+.column:hover {
+    border-color: var(--border-hover);
 }
 
 /* Header (acts as drag handle) */

@@ -63,8 +63,10 @@ function stripMarkdown(text: string): string {
 .ticket-card {
     position: relative;
     flex-shrink: 0;
-    background: var(--bg-canvas);
-    border: 1px solid var(--border);
+    background: var(--card-glass-bg);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--card-glass-border);
     border-radius: var(--radius-md);
     padding: 0.75rem 0.875rem;
     cursor: pointer;
@@ -75,11 +77,7 @@ function stripMarkdown(text: string): string {
         transform var(--transition-base),
         box-shadow var(--transition-base);
     user-select: none;
-    box-shadow: var(--shadow-xs);
-}
-
-html.light .ticket-card {
-    background: #ffffff;
+    box-shadow: var(--card-glass-shadow);
 }
 
 .ticket-card::before {
@@ -101,8 +99,9 @@ html.light .ticket-card {
 .ticket-card--low    { --priority-color: var(--priority-low); }
 
 .ticket-card:hover {
+    background: var(--card-glass-hover);
     border-color: var(--border-hover);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--card-glass-shadow-hover);
     transform: translateY(-1px);
 }
 

@@ -101,6 +101,18 @@ html, html.dark {
   --shadow-xl:   0 30px 80px rgba(0,0,0,0.55), 0 12px 24px rgba(0,0,0,0.32);
   --shadow-focus: 0 0 0 4px var(--accent-glow);
 
+  /* Ticket Card Glass */
+  --card-glass-bg:          rgba(36, 36, 38, 0.55);
+  --card-glass-border:      rgba(255, 255, 255, 0.10);
+  --card-glass-hover:       rgba(48, 48, 52, 0.68);
+  --card-glass-shadow:      0 2px 8px rgba(0,0,0,0.22), 0 1px 2px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+  --card-glass-shadow-hover:0 6px 20px rgba(0,0,0,0.32), 0 2px 6px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.08);
+
+  /* Column Glass */
+  --column-glass-bg:        rgba(28, 28, 30, 0.48);
+  --column-glass-border:    rgba(255, 255, 255, 0.08);
+  --column-glass-shadow:    0 8px 32px rgba(0,0,0,0.30), 0 2px 8px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.07);
+
   color-scheme: dark;
 }
 
@@ -159,6 +171,18 @@ html.light {
   --shadow-lg:   0 16px 40px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
   --shadow-xl:   0 30px 80px rgba(15, 23, 42, 0.18), 0 12px 24px rgba(15, 23, 42, 0.08);
   --shadow-focus: 0 0 0 4px var(--accent-glow);
+
+  /* Ticket Card Glass */
+  --card-glass-bg:          rgba(255, 255, 255, 0.62);
+  --card-glass-border:      rgba(255, 255, 255, 0.72);
+  --card-glass-hover:       rgba(255, 255, 255, 0.82);
+  --card-glass-shadow:      0 2px 8px rgba(15,23,42,0.07), 0 1px 2px rgba(15,23,42,0.05), inset 0 1px 0 rgba(255,255,255,0.85);
+  --card-glass-shadow-hover:0 6px 20px rgba(15,23,42,0.11), 0 2px 6px rgba(15,23,42,0.07), inset 0 1px 0 rgba(255,255,255,0.92);
+
+  /* Column Glass */
+  --column-glass-bg:        rgba(255, 255, 255, 0.44);
+  --column-glass-border:    rgba(255, 255, 255, 0.65);
+  --column-glass-shadow:    0 8px 32px rgba(15,23,42,0.07), 0 2px 8px rgba(15,23,42,0.04), inset 0 1px 0 rgba(255,255,255,0.82);
 
   color-scheme: light;
 }
@@ -253,8 +277,8 @@ a:hover { opacity: 0.75; }
 /* ---------- Material Utilities (vibrancy) ---------- */
 .material {
   background: var(--material-regular);
-  -webkit-backdrop-filter: blur(40px) saturate(100%);
-  backdrop-filter: blur(40px) saturate(100%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--border);
 }
 
