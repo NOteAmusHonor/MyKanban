@@ -1,4 +1,34 @@
 {
+  "_readme": {
+    "purpose": "MyKanban board data file. AIs can read and write this file directly to manage the board.",
+    "structure": {
+      "meta": "Version info and timestamps — update 'lastModified' (ISO 8601) on every write.",
+      "board": "Single board definition: id (string) + name (display name).",
+      "columns": "Ordered list of Kanban columns. Each column has: id (unique string), title (display name), order (0-based integer, determines left→right position), color (hex color #RRGGBB for column accent).",
+      "tickets": "Flat list of ALL tickets across all columns. Each ticket belongs to a column via 'columnId'."
+    },
+    "ticket_fields": {
+      "id": "Unique string, e.g. 'ticket-abc123'. Must be unique across all tickets.",
+      "columnId": "Must match one of the 'id' values in the 'columns' array. Moving a ticket = changing this value.",
+      "ticketNumber": "Random 4-digit integer (1000–9999), displayed as 'TK-XXXX'. Set once on creation, never change.",
+      "title": "Short ticket title (required, non-empty string).",
+      "description": "Optional Markdown-formatted description. Use \\n for newlines.",
+      "priority": "One of: 'low' | 'medium' | 'high' | 'urgent'.",
+      "labels": "Optional array of strings, e.g. ['bug', 'frontend']. Use existing labels or create new ones freely.",
+      "order": "0-based integer position within the column. Tickets in a column are sorted ascending by this value. Reorder by adjusting 'order' values of affected tickets.",
+      "createdAt": "ISO 8601 timestamp, set once on creation.",
+      "updatedAt": "ISO 8601 timestamp, update on every change to the ticket."
+    },
+    "ai_rules": [
+      "Always keep 'order' values consistent: no gaps required, but values must be unique within a column.",
+      "When moving a ticket to another column: change 'columnId' and set a new 'order' at the target position, reorder others if needed.",
+      "When creating a ticket: generate a unique 'id', pick a random 'ticketNumber' (1000–9999) not yet in use, set 'createdAt' and 'updatedAt' to now.",
+      "Always update 'meta.lastModified' to the current UTC time after any change.",
+      "Never delete or rename existing column IDs — use them as stable references.",
+      "The full schema is defined in 'kanban.schema.json' next to this file."
+    ]
+  },
+  "$schema": "./kanban.schema.json",
   "meta": {
     "version": "1.0.0",
     "createdAt": "2026-04-09T21:20:56.250Z",
