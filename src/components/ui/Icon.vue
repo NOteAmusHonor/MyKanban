@@ -72,6 +72,8 @@ const ICONS: Record<string, string> = {
     '<circle cx="12" cy="12" r="3" fill="currentColor" stroke="none" />',
   arrowRight:
     '<path d="M5 12h14M13 6l6 6-6 6" />',
+  lock:
+    '<rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />',
 }
 
 const path = computed(() => ICONS[props.name] ?? '')

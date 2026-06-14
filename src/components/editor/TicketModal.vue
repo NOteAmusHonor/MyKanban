@@ -28,8 +28,9 @@
                 <div class="form-group form-group--half">
                     <label class="form-label">Spalte</label>
                     <select v-model="form.columnId" class="form-input">
-                        <option v-for="col in board.sortedColumns" :key="col.id" :value="col.id">
-                            {{ col.title }}
+                        <option v-for="col in board.sortedColumns" :key="col.id" :value="col.id"
+                            :disabled="isColumnWipFull(col)">
+                            {{ col.title }}{{ isColumnWipFull(col) ? ` (${col.wipLimit}/${col.wipLimit})` : '' }}
                         </option>
                     </select>
                 </div>
@@ -92,7 +93,7 @@
                 <button type="button" class="btn btn--ghost" @click="$emit('update:modelValue', false)">
                     Abbrechen
                 </button>
-                <button type="button" class="btn btn--primary" @click="save" :disabled="!form.title.trim() || saving">
+                <button type="button" class="btn btn--primary" @click="save" :disabled="!form.title.trim() || saving || isTargetColumnWipFull">
                     {{ saving ? 'Speichere…' : isEdit ? 'Speichern' : 'Erstellen' }}
                 </button>
             </div>
@@ -104,7 +105,7 @@
 import { ref, computed, watch, nextTick, onMounted } from 'vue'
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
-import type { Priority } from '@/types'
+import type { Priority, Column } from '@/types'
 import { useBoardStore } from '@/stores/board'
 import { useUiStore } from '@/stores/ui'
 import Modal from '@/components/ui/Modal.vue'
@@ -118,6 +119,19 @@ const ui = useUiStore()
 
 const isEdit = computed(() => ui.ticketModalData?.mode === 'edit')
 const data = computed(() => ui.ticketModalData)
+
+// ─── WIP helpers ─────────────────────────────────────────────────────────────
+function isColumnWipFull(col: Column): boolean {
+    if (!col.wipLimit) return false
+    const isNewOrMoved = !isEdit.value || (data.value?.ticket && data.value.ticket.columnId !== col.id)
+    if (!isNewOrMoved) return false
+    return board.tickets.filter(t => t.columnId === col.id).length >= col.wipLimit
+}
+
+const isTargetColumnWipFull = computed(() => {
+    const col = board.columns.find(c => c.id === form.value.columnId)
+    return col ? isColumnWipFull(col) : false
+})
 
 // ─── Form State ──────────────────────────────────────────────────────────────
 const form = ref({

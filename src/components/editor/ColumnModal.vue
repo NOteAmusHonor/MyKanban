@@ -25,6 +25,15 @@
                 <!-- Preview -->
                 <div class="color-preview" :style="{ background: form.color }" />
             </div>
+
+            <!-- WIP Limit -->
+            <div class="form-group">
+                <label class="form-label">
+                    WIP-Limit (optional)
+                    <span class="form-hint">Maximale Tickets gleichzeitig in dieser Spalte (0 = kein Limit)</span>
+                </label>
+                <input type="number" v-model.number="form.wipLimit" class="form-input" min="0" max="999" placeholder="z.B. 3" />
+            </div>
         </form>
 
         <template #footer>
@@ -62,7 +71,7 @@ const ui = useUiStore()
 
 const isEdit = computed(() => ui.columnModalData?.mode === 'edit')
 
-const form = ref({ title: '', color: '#0a84ff' })
+const form = ref({ title: '', color: '#0a84ff', wipLimit: 0 })
 const saving = ref(false)
 const deleting = ref(false)
 const nameInput = ref<HTMLInputElement | null>(null)
@@ -70,9 +79,9 @@ const nameInput = ref<HTMLInputElement | null>(null)
 watch(() => ui.columnModalData, (d) => {
     if (!d) return
     if (d.mode === 'edit' && d.column) {
-        form.value = { title: d.column.title, color: d.column.color }
+        form.value = { title: d.column.title, color: d.column.color, wipLimit: d.column.wipLimit ?? 0 }
     } else {
-        form.value = { title: '', color: '#0a84ff' }
+        form.value = { title: '', color: '#0a84ff', wipLimit: 0 }
     }
 }, { immediate: true })
 
@@ -96,13 +105,15 @@ async function save() {
     if (!form.value.title.trim()) return
     saving.value = true
     try {
+        const wip = form.value.wipLimit > 0 ? form.value.wipLimit : undefined
         if (isEdit.value && ui.columnModalData?.column) {
             await board.updateColumn(ui.columnModalData.column.id, {
                 title: form.value.title.trim(),
                 color: form.value.color,
+                wipLimit: wip,
             })
         } else {
-            await board.createColumn({ title: form.value.title.trim(), color: form.value.color })
+            await board.createColumn({ title: form.value.title.trim(), color: form.value.color, wipLimit: wip })
         }
         ui.closeModal()
     } finally {
@@ -138,6 +149,16 @@ async function deleteColumn() {
     font-weight: 600;
     color: var(--text-secondary);
     letter-spacing: -0.005em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.form-hint {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    letter-spacing: 0;
 }
 
 .form-input {

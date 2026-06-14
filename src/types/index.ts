@@ -13,6 +13,7 @@ export interface Column {
   title: string
   order: number
   color: string
+  wipLimit?: number
 }
 
 export interface Ticket {

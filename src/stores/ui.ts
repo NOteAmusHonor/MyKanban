@@ -85,6 +85,9 @@ export const useUiStore = defineStore('ui', () => {
   const filterPriorities = ref<string[]>([])
   const filterLabels = ref<string[]>([])
 
+  // ─── Drag state ─────────────────────────────────────────────────────────────
+  const dragSourceColumnId = ref<string | null>(null)
+
   function clearFilters() {
     searchQuery.value = ''
     filterPriorities.value = []
@@ -114,5 +117,6 @@ export const useUiStore = defineStore('ui', () => {
     filterLabels,
     clearFilters,
     hasActiveFilters,
+    dragSourceColumnId,
   }
 })

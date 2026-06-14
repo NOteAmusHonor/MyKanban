@@ -1,6 +1,6 @@
 <template>
     <div class="column-wrap">
-        <div class="column">
+        <div class="column" :class="{ 'column--wip-blocked': showWipOverlay }">
             <!-- Column Header (drag handle) -->
             <div class="column-header">
                 <div class="column-title-row">
@@ -16,14 +16,23 @@
                             <Icon name="more" :size="16" />
                         </button>
                     </div>
-                    <span class="column-count">{{ columnTickets.length }}</span>
+                    <span class="column-count" :class="{ 'column-count--over': isOverLimit }">
+                        {{ columnTickets.length }}{{ column.wipLimit ? `/${column.wipLimit}` : '' }}
+                    </span>
+                </div>
+                <div v-if="column.wipLimit" class="wip-bar-wrap">
+                    <div class="wip-bar" :class="{ 'wip-bar--over': isOverLimit }"
+                        :style="{ width: `${wipPercent}%`, background: isOverLimit ? 'var(--priority-urgent)' : column.color }" />
                 </div>
             </div>
 
             <!-- Ticket List -->
             <draggable :list="localTickets" item-key="id" group="tickets" :animation="220" ghost-class="ticket-ghost"
                 drag-class="ticket-drag" class="column-tickets"
-                :class="{ 'column-tickets--empty': !columnTickets.length }" @change="onDragChange">
+                :class="{ 'column-tickets--empty': !columnTickets.length }"
+                :data-column-id="column.id"
+                @start="onDragStart" @end="onDragEnd"
+                @change="onDragChange" :move="onDragMove">
                 <template #item="{ element }">
                     <KanbanTicket :key="element.id" :ticket="element" :is-filtered="isTicketFiltered(element)" />
                 </template>
@@ -40,6 +49,17 @@
                     </div>
                 </template>
             </draggable>
+
+            <!-- WIP Overlay -->
+            <Transition name="wip-fade">
+                <div v-if="showWipOverlay" class="wip-overlay">
+                    <div class="wip-overlay-icon">
+                        <Icon name="lock" :size="20" />
+                    </div>
+                    <span class="wip-overlay-title">WIP-Limit erreicht</span>
+                    <span class="wip-overlay-sub">{{ columnTickets.length }}/{{ column.wipLimit }} – kein weiteres Ticket möglich</span>
+                </div>
+            </Transition>
 
             <!-- Footer add -->
             <button class="column-add-btn" @click="ui.openTicketCreate(column.id)">
@@ -72,6 +92,22 @@ const columnTickets = computed(() =>
         .sort((a, b) => a.order - b.order),
 )
 
+const isOverLimit = computed(() => {
+    if (!props.column.wipLimit) return false
+    return columnTickets.value.length >= props.column.wipLimit
+})
+
+const showWipOverlay = computed(() =>
+    isOverLimit.value &&
+    ui.dragSourceColumnId !== null &&
+    ui.dragSourceColumnId !== props.column.id,
+)
+
+const wipPercent = computed(() => {
+    if (!props.column.wipLimit) return 0
+    return Math.min((columnTickets.value.length / props.column.wipLimit) * 100, 100)
+})
+
 watch(columnTickets, (val) => {
     localTickets.value = [...val]
 }, { immediate: true })
@@ -93,6 +129,31 @@ function isTicketFiltered(ticket: Ticket): boolean {
     if (filterLabels.length && !ticket.labels.some(l => filterLabels.includes(l))) return true
 
     return false
+}
+
+function onDragStart() {
+    ui.dragSourceColumnId = props.column.id
+}
+
+function onDragEnd() {
+    ui.dragSourceColumnId = null
+}
+
+function onDragMove(evt: any): boolean {
+    const targetColumnId = evt.to.getAttribute('data-column-id')
+    if (!targetColumnId) return true
+
+    const targetCol = board.columns.find(c => c.id === targetColumnId)
+    if (!targetCol || !targetCol.wipLimit) return true
+
+    const draggedTicket = evt.draggedContext.element
+    if (draggedTicket.columnId === targetColumnId) return true
+
+    const targetTicketsCount = board.tickets.filter(t => t.columnId === targetColumnId).length
+    if (targetTicketsCount >= targetCol.wipLimit) {
+        return false
+    }
+    return true
 }
 
 async function onDragChange(event: {
@@ -187,6 +248,27 @@ async function onDragChange(event: {
     text-align: center;
     font-variant-numeric: tabular-nums;
     flex-shrink: 0;
+}
+
+.column-count--over {
+    background: color-mix(in srgb, var(--priority-urgent) 15%, transparent);
+    border-color: var(--priority-urgent);
+    color: var(--priority-urgent);
+}
+
+.wip-bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: var(--input-bg);
+    margin-top: 0.5rem;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.wip-bar {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.3s ease;
 }
 
 .column-actions {
@@ -309,5 +391,68 @@ async function onDragChange(event: {
 
 .add-first-btn:active {
     transform: scale(0.96);
+}
+
+/* WIP Overlay */
+.column {
+    position: relative;
+}
+
+.wip-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--priority-urgent) 8%, var(--column-glass-bg) 92%);
+    border: 1.5px solid color-mix(in srgb, var(--priority-urgent) 55%, transparent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    z-index: 20;
+    pointer-events: none;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.wip-overlay-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--priority-urgent) 14%, transparent);
+    color: var(--priority-urgent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+}
+
+.wip-overlay-title {
+    font-size: 0.875rem;
+    font-weight: 650;
+    color: var(--priority-urgent);
+    letter-spacing: -0.012em;
+}
+
+.wip-overlay-sub {
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--priority-urgent) 75%, var(--text-secondary));
+    font-weight: 450;
+}
+
+.column--wip-blocked {
+    border-color: color-mix(in srgb, var(--priority-urgent) 45%, transparent) !important;
+}
+
+/* Overlay transition */
+.wip-fade-enter-active,
+.wip-fade-leave-active {
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.wip-fade-enter-from,
+.wip-fade-leave-to {
+    opacity: 0;
+    transform: scale(0.97);
 }
 </style>

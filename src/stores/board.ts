@@ -260,12 +260,13 @@ export const useBoardStore = defineStore('board', () => {
   }
 
   // ─── Column actions ────────────────────────────────────────────────────
-  async function createColumn(payload: { title: string; color?: string }) {
+  async function createColumn(payload: { title: string; color?: string; wipLimit?: number }) {
     const column: Column = {
       id: generateId(),
       title: payload.title,
       color: payload.color ?? '#6366f1',
       order: columns.value.length,
+      wipLimit: payload.wipLimit,
     }
     columns.value.push(column)
     try {

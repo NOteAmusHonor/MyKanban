@@ -32,7 +32,7 @@
   "meta": {
     "version": "1.0.0",
     "createdAt": "2026-04-09T21:20:56.250Z",
-    "lastModified": "2026-06-14T21:43:29.646Z"
+    "lastModified": "2026-06-14T22:13:15.092Z"
   },
   "board": {
     "id": "board-1",
@@ -67,7 +67,7 @@
       "wipLimit": 2
     },
     {
-      "id": "0q8qfkhtmpy3fmsx",
+      "id": "0q8qfzkhtmpy3fmsx",
       "title": "Erledigt",
       "color": "#bf5af2",
       "order": 4
@@ -150,7 +150,7 @@
     },
     {
       "id": "ticket-t6",
-      "columnId": "col-todo",
+      "columnId": "col-inprogress",
       "title": "Datenbankschema migrieren",
       "description": "Migration von v1 auf v2 Schema durchführen.\n\n```sql\nALTER TABLE tickets ADD COLUMN assignee_id INT;\n```",
       "priority": "high",
@@ -159,12 +159,13 @@
         "database"
       ],
       "ticketNumber": 5566,
-      "order": 0,
-      "createdAt": "2026-05-25T12:00:00.000Z"
+      "order": 3,
+      "createdAt": "2026-05-25T12:00:00.000Z",
+      "updatedAt": "2026-06-14T21:59:40.608Z"
     },
     {
       "id": "ticket-t7",
-      "columnId": "col-todo",
+      "columnId": "0q8qfzkhtmpy3fmsx",
       "title": "Ticket-Export als CSV",
       "description": "Alle Tickets eines Boards als CSV-Datei exportieren.",
       "priority": "medium",
@@ -173,8 +174,9 @@
         "export"
       ],
       "ticketNumber": 6677,
-      "order": 1,
-      "createdAt": "2026-05-25T12:00:00.000Z"
+      "order": 3,
+      "createdAt": "2026-05-25T12:00:00.000Z",
+      "updatedAt": "2026-06-14T22:13:15.092Z"
     },
     {
       "id": "ticket-t8",
@@ -207,7 +209,7 @@
     },
     {
       "id": "ticket-t10",
-      "columnId": "col-review",
+      "columnId": "0q8qfzkhtmpy3fmsx",
       "title": "Mehrsprachigkeit (i18n) vorbereiten",
       "description": "vue-i18n einrichten und Strings externalisieren.",
       "priority": "low",
@@ -216,13 +218,13 @@
         "feature"
       ],
       "ticketNumber": 1234,
-      "order": 3,
+      "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:29.646Z"
+      "updatedAt": "2026-06-14T22:13:15.092Z"
     },
     {
       "id": "ticket-t11",
-      "columnId": "col-review",
+      "columnId": "0q8qfzkhtmpy3fmsx",
       "title": "Drag & Drop verbessern",
       "description": "Animationen beim Verschieben von Tickets und Spalten verfeinern.",
       "priority": "high",
@@ -233,11 +235,11 @@
       "ticketNumber": 2345,
       "order": 2,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:29.646Z"
+      "updatedAt": "2026-06-14T22:13:15.092Z"
     },
     {
       "id": "ticket-t12",
-      "columnId": "col-inprogress",
+      "columnId": "col-review",
       "title": "REST API absichern",
       "description": "Rate-Limiting und Input-Validierung für alle Endpunkte implementieren.",
       "priority": "high",
@@ -246,9 +248,9 @@
         "security"
       ],
       "ticketNumber": 3456,
-      "order": 2,
+      "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:21.351Z"
+      "updatedAt": "2026-06-14T21:59:41.695Z"
     },
     {
       "id": "ticket-t13",
@@ -260,9 +262,9 @@
         "feature"
       ],
       "ticketNumber": 4567,
-      "order": 3,
+      "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:21.351Z"
+      "updatedAt": "2026-06-14T21:59:40.608Z"
     },
     {
       "id": "ticket-t14",
@@ -275,13 +277,13 @@
         "websocket"
       ],
       "ticketNumber": 5678,
-      "order": 4,
+      "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:21.351Z"
+      "updatedAt": "2026-06-14T21:59:40.608Z"
     },
     {
       "id": "ticket-t15",
-      "columnId": "col-review",
+      "columnId": "0q8qfzkhtmpy3fmsx",
       "title": "Onboarding-Tour implementieren",
       "description": "Neue Nutzer durch die wichtigsten Features führen.",
       "priority": "medium",
@@ -292,11 +294,11 @@
       "ticketNumber": 6789,
       "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:29.646Z"
+      "updatedAt": "2026-06-14T22:13:15.092Z"
     },
     {
       "id": "ticket-t16",
-      "columnId": "col-inprogress",
+      "columnId": "col-todo",
       "title": "Label-Verwaltung ausbauen",
       "description": "Eigene Labels erstellen, umbenennen und löschen.",
       "priority": "low",
@@ -305,9 +307,9 @@
         "ui"
       ],
       "ticketNumber": 7890,
-      "order": 1,
+      "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:21.351Z"
+      "updatedAt": "2026-06-14T21:57:26.913Z"
     },
     {
       "id": "ticket-t17",
@@ -319,9 +321,9 @@
         "design"
       ],
       "ticketNumber": 8901,
-      "order": 1,
+      "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-06-14T21:43:29.646Z"
+      "updatedAt": "2026-06-14T21:59:41.695Z"
     }
   ]
 }
