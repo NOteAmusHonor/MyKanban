@@ -1,0 +1,187 @@
+{
+  "D:\\Projekte\\MyKanban\\.prettierrc.json": {
+    "mtime": 1775079030.2292273,
+    "ast_hash": "81e1a85eb3522eed48d5095183125238",
+    "semantic_hash": "81e1a85eb3522eed48d5095183125238"
+  },
+  "D:\\Projekte\\MyKanban\\.vscode\\extensions.json": {
+    "mtime": 1775513529.8877082,
+    "ast_hash": "f63d31c17f418831ea35b33acbbda652",
+    "semantic_hash": "f63d31c17f418831ea35b33acbbda652"
+  },
+  "D:\\Projekte\\MyKanban\\bin\\mykanban.mjs": {
+    "mtime": 1775763629.8401048,
+    "ast_hash": "74e08141ad8622bed90a3f314fd1255c",
+    "semantic_hash": "74e08141ad8622bed90a3f314fd1255c"
+  },
+  "D:\\Projekte\\MyKanban\\env.d.ts": {
+    "mtime": 1775765680.0974205,
+    "ast_hash": "61a92a27fc1a4570b54c2d11956fa8cd",
+    "semantic_hash": "61a92a27fc1a4570b54c2d11956fa8cd"
+  },
+  "D:\\Projekte\\MyKanban\\kanban.json": {
+    "mtime": 1780492786.751709,
+    "ast_hash": "40c9c66321986e9a1b84402cd60ca1ff",
+    "semantic_hash": "40c9c66321986e9a1b84402cd60ca1ff"
+  },
+  "D:\\Projekte\\MyKanban\\kanban.schema.json": {
+    "mtime": 1775763629.8401048,
+    "ast_hash": "afa781dcf8dcb6fe797e4ce1ae1ca21e",
+    "semantic_hash": "afa781dcf8dcb6fe797e4ce1ae1ca21e"
+  },
+  "D:\\Projekte\\MyKanban\\package.json": {
+    "mtime": 1775772663.491703,
+    "ast_hash": "3da3190d832ad0a7be40e3208db4b72a",
+    "semantic_hash": "3da3190d832ad0a7be40e3208db4b72a"
+  },
+  "D:\\Projekte\\MyKanban\\server\\index.mjs": {
+    "mtime": 1775767139.8716009,
+    "ast_hash": "7ee042deb80732896d22025ff6a1d772",
+    "semantic_hash": "7ee042deb80732896d22025ff6a1d772"
+  },
+  "D:\\Projekte\\MyKanban\\server\\jsconfig.json": {
+    "mtime": 1775765409.1166642,
+    "ast_hash": "53778877dd6026a1320d2651bac281b5",
+    "semantic_hash": "53778877dd6026a1320d2651bac281b5"
+  },
+  "D:\\Projekte\\MyKanban\\src\\App.vue": {
+    "mtime": 1779879990.0715358,
+    "ast_hash": "b28c9d9e4f5164c793fd1f6aaf680fa7",
+    "semantic_hash": "b28c9d9e4f5164c793fd1f6aaf680fa7"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\board\\BoardStats.vue": {
+    "mtime": 1779879990.0735419,
+    "ast_hash": "8bf0749fc045c9f2515ec94aebb278a0",
+    "semantic_hash": "8bf0749fc045c9f2515ec94aebb278a0"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\board\\KanbanBoard.vue": {
+    "mtime": 1779879990.0755475,
+    "ast_hash": "e7561090782a3e0308d483f9fac88298",
+    "semantic_hash": "e7561090782a3e0308d483f9fac88298"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\board\\KanbanColumn.vue": {
+    "mtime": 1779879990.0755475,
+    "ast_hash": "67f1b6d52d5f2a37fb3f6d3d118920fa",
+    "semantic_hash": "67f1b6d52d5f2a37fb3f6d3d118920fa"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\board\\KanbanTicket.vue": {
+    "mtime": 1779879990.0770535,
+    "ast_hash": "e8e3f969d6967a5770facf01289a16e9",
+    "semantic_hash": "e8e3f969d6967a5770facf01289a16e9"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\editor\\ColumnModal.vue": {
+    "mtime": 1779879990.0770535,
+    "ast_hash": "d7cd5c93db70ada09b772b49853b1d32",
+    "semantic_hash": "d7cd5c93db70ada09b772b49853b1d32"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\editor\\TicketModal.vue": {
+    "mtime": 1781472972.9459882,
+    "ast_hash": "4754672df0043c30f4e64197e3fa436e",
+    "semantic_hash": "4754672df0043c30f4e64197e3fa436e"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\ui\\Badge.vue": {
+    "mtime": 1779879990.0802062,
+    "ast_hash": "e105153129ab0d7d01dec83f132e88c1",
+    "semantic_hash": "e105153129ab0d7d01dec83f132e88c1"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\ui\\Button.vue": {
+    "mtime": 1775763629.5948536,
+    "ast_hash": "0cfbbaacf3c72fb67150c10f8f7a0c7f",
+    "semantic_hash": "0cfbbaacf3c72fb67150c10f8f7a0c7f"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\ui\\Icon.vue": {
+    "mtime": 1779879990.0802062,
+    "ast_hash": "0b31432cdb09bcfc3fbe807fd57d25ad",
+    "semantic_hash": "0b31432cdb09bcfc3fbe807fd57d25ad"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\ui\\Modal.vue": {
+    "mtime": 1779879990.0802062,
+    "ast_hash": "7c2fbab90d8fed05961bfc348de05f0f",
+    "semantic_hash": "7c2fbab90d8fed05961bfc348de05f0f"
+  },
+  "D:\\Projekte\\MyKanban\\src\\components\\ui\\Toast.vue": {
+    "mtime": 1779879990.0822158,
+    "ast_hash": "f6bf678ae00af09c1316993faf8ea56d",
+    "semantic_hash": "f6bf678ae00af09c1316993faf8ea56d"
+  },
+  "D:\\Projekte\\MyKanban\\src\\composables\\useKeyboard.ts": {
+    "mtime": 1779879990.082719,
+    "ast_hash": "15f67cb614b738102a8007360c63e7d4",
+    "semantic_hash": "15f67cb614b738102a8007360c63e7d4"
+  },
+  "D:\\Projekte\\MyKanban\\src\\index.ts": {
+    "mtime": 1779879990.0945945,
+    "ast_hash": "72379acd901445026a0a4f03f30f5aa6",
+    "semantic_hash": "72379acd901445026a0a4f03f30f5aa6"
+  },
+  "D:\\Projekte\\MyKanban\\src\\main.ts": {
+    "mtime": 1775760357.3773086,
+    "ast_hash": "6adf0ae97ec3b66ab130d308cee67a77",
+    "semantic_hash": "6adf0ae97ec3b66ab130d308cee67a77"
+  },
+  "D:\\Projekte\\MyKanban\\src\\router\\index.ts": {
+    "mtime": 1775764452.7427099,
+    "ast_hash": "4ee84a50ea292c9ea149988599accd00",
+    "semantic_hash": "4ee84a50ea292c9ea149988599accd00"
+  },
+  "D:\\Projekte\\MyKanban\\src\\stores\\board.ts": {
+    "mtime": 1779879990.110916,
+    "ast_hash": "90f1f07e4cd4ad9e4a5b46ce3744c775",
+    "semantic_hash": "90f1f07e4cd4ad9e4a5b46ce3744c775"
+  },
+  "D:\\Projekte\\MyKanban\\src\\stores\\ui.ts": {
+    "mtime": 1779879990.1208434,
+    "ast_hash": "b3fa72569a1d182f32478af5c28c947a",
+    "semantic_hash": "b3fa72569a1d182f32478af5c28c947a"
+  },
+  "D:\\Projekte\\MyKanban\\src\\types\\index.ts": {
+    "mtime": 1779879990.1315727,
+    "ast_hash": "af9ec420696e79c2041cbf1313b74d2b",
+    "semantic_hash": "af9ec420696e79c2041cbf1313b74d2b"
+  },
+  "D:\\Projekte\\MyKanban\\src\\utils\\helpers.ts": {
+    "mtime": 1775763241.4878905,
+    "ast_hash": "c110984b52f231e4d6f8e3e24996e318",
+    "semantic_hash": "c110984b52f231e4d6f8e3e24996e318"
+  },
+  "D:\\Projekte\\MyKanban\\tsconfig.app.json": {
+    "mtime": 1775079030.2820137,
+    "ast_hash": "d23d3dece9cd70f4925fd79f7acc4571",
+    "semantic_hash": "d23d3dece9cd70f4925fd79f7acc4571"
+  },
+  "D:\\Projekte\\MyKanban\\tsconfig.json": {
+    "mtime": 1775513529.8795784,
+    "ast_hash": "95c50cdab2472124432dc71e994b481b",
+    "semantic_hash": "95c50cdab2472124432dc71e994b481b"
+  },
+  "D:\\Projekte\\MyKanban\\tsconfig.node.json": {
+    "mtime": 1775079030.2852793,
+    "ast_hash": "71f05a3eb52ee484e78a2232e3650c0b",
+    "semantic_hash": "71f05a3eb52ee484e78a2232e3650c0b"
+  },
+  "D:\\Projekte\\MyKanban\\vite.config.ts": {
+    "mtime": 1775776207.9291909,
+    "ast_hash": "8d639bfa6b61870fcf0783430f4d48dd",
+    "semantic_hash": "8d639bfa6b61870fcf0783430f4d48dd"
+  },
+  "D:\\Projekte\\MyKanban\\.github\\copilot-instructions.md": {
+    "mtime": 1779879990.0525298,
+    "ast_hash": "dbbe3d57e4b0a71811628f31e01552b0",
+    "semantic_hash": "dbbe3d57e4b0a71811628f31e01552b0"
+  },
+  "D:\\Projekte\\MyKanban\\README.md": {
+    "mtime": 1779879990.0545354,
+    "ast_hash": "8c45d9bcb31677e7e1993937338cf924",
+    "semantic_hash": "8c45d9bcb31677e7e1993937338cf924"
+  },
+  "D:\\Projekte\\MyKanban\\index.html": {
+    "mtime": 1775516228.3264594,
+    "ast_hash": "cb87fd5aaa07600127ee09feedb0a9c6",
+    "semantic_hash": "cb87fd5aaa07600127ee09feedb0a9c6"
+  },
+  "D:\\Projekte\\MyKanban\\src\\images\\logo-kanban.png": {
+    "mtime": 1776028969.6170106,
+    "ast_hash": "4aa97c6e9377593ec83bad2c90ab96c0",
+    "semantic_hash": "4aa97c6e9377593ec83bad2c90ab96c0"
+  }
+}

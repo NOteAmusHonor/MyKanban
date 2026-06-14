@@ -32,7 +32,7 @@
   "meta": {
     "version": "1.0.0",
     "createdAt": "2026-04-09T21:20:56.250Z",
-    "lastModified": "2026-05-27T10:48:40.953Z"
+    "lastModified": "2026-06-14T21:43:29.646Z"
   },
   "board": {
     "id": "board-1",
@@ -62,6 +62,12 @@
       "title": "Review",
       "order": 3,
       "color": "#a855f7"
+    },
+    {
+      "id": "0q8qfzkhtmpy3fmsx",
+      "title": "Erledigt",
+      "color": "#bf5af2",
+      "order": 4
     }
   ],
   "tickets": [
@@ -209,11 +215,11 @@
       "ticketNumber": 1234,
       "order": 3,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-05-25T12:10:24.497Z"
+      "updatedAt": "2026-06-14T21:43:29.646Z"
     },
     {
       "id": "ticket-t11",
-      "columnId": "col-inprogress",
+      "columnId": "col-review",
       "title": "Drag & Drop verbessern",
       "description": "Animationen beim Verschieben von Tickets und Spalten verfeinern.",
       "priority": "high",
@@ -222,8 +228,9 @@
         "ux"
       ],
       "ticketNumber": 2345,
-      "order": 0,
-      "createdAt": "2026-05-25T12:00:00.000Z"
+      "order": 2,
+      "createdAt": "2026-05-25T12:00:00.000Z",
+      "updatedAt": "2026-06-14T21:43:29.646Z"
     },
     {
       "id": "ticket-t12",
@@ -236,8 +243,9 @@
         "security"
       ],
       "ticketNumber": 3456,
-      "order": 1,
-      "createdAt": "2026-05-25T12:00:00.000Z"
+      "order": 2,
+      "createdAt": "2026-05-25T12:00:00.000Z",
+      "updatedAt": "2026-06-14T21:43:21.351Z"
     },
     {
       "id": "ticket-t13",
@@ -249,8 +257,9 @@
         "feature"
       ],
       "ticketNumber": 4567,
-      "order": 2,
-      "createdAt": "2026-05-25T12:00:00.000Z"
+      "order": 3,
+      "createdAt": "2026-05-25T12:00:00.000Z",
+      "updatedAt": "2026-06-14T21:43:21.351Z"
     },
     {
       "id": "ticket-t14",
@@ -263,8 +272,9 @@
         "websocket"
       ],
       "ticketNumber": 5678,
-      "order": 3,
-      "createdAt": "2026-05-25T12:00:00.000Z"
+      "order": 4,
+      "createdAt": "2026-05-25T12:00:00.000Z",
+      "updatedAt": "2026-06-14T21:43:21.351Z"
     },
     {
       "id": "ticket-t15",
@@ -279,11 +289,11 @@
       "ticketNumber": 6789,
       "order": 0,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-05-25T12:10:24.497Z"
+      "updatedAt": "2026-06-14T21:43:29.646Z"
     },
     {
       "id": "ticket-t16",
-      "columnId": "col-review",
+      "columnId": "col-inprogress",
       "title": "Label-Verwaltung ausbauen",
       "description": "Eigene Labels erstellen, umbenennen und löschen.",
       "priority": "low",
@@ -294,7 +304,7 @@
       "ticketNumber": 7890,
       "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-05-25T12:10:24.497Z"
+      "updatedAt": "2026-06-14T21:43:21.351Z"
     },
     {
       "id": "ticket-t17",
@@ -306,9 +316,9 @@
         "design"
       ],
       "ticketNumber": 8901,
-      "order": 2,
+      "order": 1,
       "createdAt": "2026-05-25T12:00:00.000Z",
-      "updatedAt": "2026-05-25T12:10:24.497Z"
+      "updatedAt": "2026-06-14T21:43:29.646Z"
     }
   ]
 }

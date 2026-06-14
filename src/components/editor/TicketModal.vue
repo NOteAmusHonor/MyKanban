@@ -145,6 +145,7 @@ watch(data, (d) => {
             columnId: d.ticket.columnId,
             labels: [...d.ticket.labels],
         }
+        descTab.value = 'preview'
     } else {
         form.value = {
             title: '',
