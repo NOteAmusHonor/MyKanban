@@ -4,7 +4,7 @@
     "structure": {
       "meta": "Version info and timestamps — update 'lastModified' (ISO 8601) on every write.",
       "board": "Single board definition: id (string) + name (display name).",
-      "columns": "Ordered list of Kanban columns. Each column has: id (unique string), title (display name), order (0-based integer, determines left→right position), color (hex color #RRGGBB for column accent).",
+      "columns": "Ordered list of Kanban columns. Each column has: id (unique string), title (display name), order (0-based integer), color (hex #RRGGBB), wipLimit (optional number: max tickets before warning, omit for unlimited).",
       "tickets": "Flat list of ALL tickets across all columns. Each ticket belongs to a column via 'columnId'."
     },
     "ticket_fields": {
@@ -49,22 +49,25 @@
       "id": "col-todo",
       "title": "Zu erledigen",
       "order": 1,
-      "color": "#ff3b30"
+      "color": "#ff3b30",
+      "wipLimit": 3
     },
     {
       "id": "col-inprogress",
       "title": "In Bearbeitung",
       "order": 2,
-      "color": "#f97316"
+      "color": "#f97316",
+      "wipLimit": 3
     },
     {
       "id": "col-review",
       "title": "Review",
       "order": 3,
-      "color": "#a855f7"
+      "color": "#a855f7",
+      "wipLimit": 2
     },
     {
-      "id": "0q8qfzkhtmpy3fmsx",
+      "id": "0q8qfkhtmpy3fmsx",
       "title": "Erledigt",
       "color": "#bf5af2",
       "order": 4
