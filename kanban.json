@@ -32,7 +32,7 @@
   "meta": {
     "version": "1.0.0",
     "createdAt": "2026-04-09T21:20:56.250Z",
-    "lastModified": "2026-07-01T11:03:16.525Z"
+    "lastModified": "2026-07-01T11:19:17.383Z"
   },
   "board": {
     "id": "board-1",
@@ -77,15 +77,15 @@
   "tickets": [
     {
       "id": "7ua54whfkmr1yuk40",
-      "columnId": "col-backlog",
+      "columnId": "col-todo",
       "ticketNumber": 1041,
       "title": "f",
       "description": "fasfasfa",
       "priority": "low",
       "labels": [],
-      "order": 0,
+      "order": 2,
       "createdAt": "2026-07-01T11:02:12.048Z",
-      "updatedAt": "2026-07-01T11:03:16.525Z"
+      "updatedAt": "2026-07-01T11:19:17.383Z"
     },
     {
       "id": "zpxzis69bmr1yuq6c",
@@ -95,9 +95,9 @@
       "description": "fasfasfas",
       "priority": "medium",
       "labels": [],
-      "order": 2,
+      "order": 1,
       "createdAt": "2026-07-01T11:02:19.908Z",
-      "updatedAt": "2026-07-01T11:03:03.042Z"
+      "updatedAt": "2026-07-01T11:19:17.383Z"
     },
     {
       "id": "op1l5t88fmr1yv1eo",
@@ -107,9 +107,9 @@
       "description": "fasfafasfa",
       "priority": "medium",
       "labels": [],
-      "order": 1,
+      "order": 0,
       "createdAt": "2026-07-01T11:02:34.464Z",
-      "updatedAt": "2026-07-01T11:03:03.042Z"
+      "updatedAt": "2026-07-01T11:19:17.383Z"
     }
   ]
 }

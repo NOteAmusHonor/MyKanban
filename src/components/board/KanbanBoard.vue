@@ -12,8 +12,8 @@
                                     <stop offset="100%" stop-color="#0a84ff" />
                                 </linearGradient>
                             </defs>
-                            <rect x="3" y="3" width="8" height="18" rx="3" fill="url(#logo-grad)" opacity="0.95"/>
-                            <rect x="13" y="3" width="8" height="11" rx="3" fill="url(#logo-grad)" opacity="0.65"/>
+                            <rect x="3" y="3" width="8" height="18" rx="3" fill="url(#logo-grad)" opacity="0.95" />
+                            <rect x="13" y="3" width="8" height="11" rx="3" fill="url(#logo-grad)" opacity="0.65" />
                         </svg>
                     </span>
                     <span class="logo-text">{{ projectName }}</span>
@@ -22,12 +22,11 @@
                 <span class="divider-v" aria-hidden="true" />
 
                 <div class="board-name-wrap">
-                    <h1 v-if="!editingName" class="board-name" @click="startNameEdit"
-                        :title="'Board umbenennen'">
+                    <h1 v-if="!editingName" class="board-name" @click="startNameEdit" :title="'Board umbenennen'">
                         {{ board.board.name }}
                     </h1>
-                    <input v-else ref="nameInput" v-model="nameValue" class="board-name-input"
-                        @keydown.enter="saveName" @keydown.escape="cancelNameEdit" @blur="saveName" />
+                    <input v-else ref="nameInput" v-model="nameValue" class="board-name-input" @keydown.enter="saveName"
+                        @keydown.escape="cancelNameEdit" @blur="saveName" />
                 </div>
             </div>
 
@@ -35,8 +34,7 @@
                 <!-- Search -->
                 <div class="search-wrap">
                     <Icon name="search" :size="14" class="search-icon" />
-                    <input v-model="ui.searchQuery" class="search-input" type="search"
-                        placeholder="Suchen" />
+                    <input v-model="ui.searchQuery" class="search-input" type="search" placeholder="Suchen" />
                     <button v-if="ui.searchQuery" class="search-clear" @click="ui.searchQuery = ''"
                         aria-label="Suche löschen">
                         <Icon name="close" :size="12" />
@@ -47,8 +45,8 @@
                 <div class="priority-filters" role="group" aria-label="Nach Priorität filtern">
                     <button v-for="p in priorities" :key="p.value"
                         :class="['priority-filter-btn', { active: ui.filterPriorities.includes(p.value) }]"
-                        :style="{ '--p-color': p.color }" @click="togglePriorityFilter(p.value)"
-                        :data-tooltip="p.label" :aria-label="p.label">
+                        :style="{ '--p-color': p.color }" @click="togglePriorityFilter(p.value)" :data-tooltip="p.label"
+                        :aria-label="p.label">
                         <span class="p-dot" />
                     </button>
                 </div>
@@ -61,8 +59,7 @@
                 </div>
 
                 <!-- Stats -->
-                <button class="header-btn" @click="ui.openStats()" data-tooltip="Statistiken"
-                    aria-label="Statistiken">
+                <button class="header-btn" @click="ui.openStats()" data-tooltip="Statistiken" aria-label="Statistiken">
                     <Icon name="chart" :size="16" />
                 </button>
 
@@ -109,8 +106,7 @@
         <div v-else class="columns-outer">
             <div class="columns-scroll">
                 <draggable v-model="localColumns" item-key="id" group="columns" :animation="280"
-                    ghost-class="column-ghost" handle=".column-header" class="columns-container"
-                    @end="onColumnDragEnd">
+                    ghost-class="column-ghost" handle=".column-header" class="columns-container" @end="onColumnDragEnd">
                     <template #item="{ element }">
                         <KanbanColumn :column="element" />
                     </template>
@@ -135,14 +131,13 @@
         </div>
 
         <!-- ── Modals ──────────────────────────────────────────────── -->
-        <TicketModal v-if="ui.activeModal === 'ticket-create' || ui.activeModal === 'ticket-edit'"
-            :model-value="true" @update:model-value="ui.closeModal()" />
-
-        <ColumnModal v-if="ui.activeModal === 'column-create' || ui.activeModal === 'column-edit'"
-            :model-value="true" @update:model-value="ui.closeModal()" />
-
-        <BoardStats v-if="ui.activeModal === 'stats'" :model-value="true"
+        <TicketModal v-if="ui.activeModal === 'ticket-create' || ui.activeModal === 'ticket-edit'" :model-value="true"
             @update:model-value="ui.closeModal()" />
+
+        <ColumnModal v-if="ui.activeModal === 'column-create' || ui.activeModal === 'column-edit'" :model-value="true"
+            @update:model-value="ui.closeModal()" />
+
+        <BoardStats v-if="ui.activeModal === 'stats'" :model-value="true" @update:model-value="ui.closeModal()" />
     </div>
 </template>
 
@@ -454,7 +449,7 @@ onMounted(() => board.fetchBoard())
     background: var(--accent);
     color: #fff;
     padding: 0 0.75rem;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .header-btn--primary:hover {
@@ -579,13 +574,14 @@ onMounted(() => board.fetchBoard())
 .shortcuts-bar {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
     gap: 1rem;
     padding: 0.625rem 1rem;
     flex-shrink: 0;
     font-size: 0.75rem;
     color: var(--text-tertiary);
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
 
 .shortcut-item {
