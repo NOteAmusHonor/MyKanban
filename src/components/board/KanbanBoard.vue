@@ -574,7 +574,7 @@ onMounted(() => board.fetchBoard())
 .shortcuts-bar {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1rem;
     padding: 0.625rem 1rem;
     flex-shrink: 0;
