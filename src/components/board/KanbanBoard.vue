@@ -125,6 +125,15 @@
             </div>
         </div>
 
+        <!-- ── Tastenkürzel ────────────────────────────────────────── -->
+        <div v-if="!board.loading" class="shortcuts-bar">
+            <span class="shortcut-item"><kbd>Strg</kbd> + <kbd>N</kbd> Neues Ticket</span>
+            <span class="shortcut-item"><kbd>Strg</kbd> + <kbd>C</kbd> Neue Spalte</span>
+            <span class="shortcut-item"><kbd>Strg</kbd> + <kbd>S</kbd> Statistiken</span>
+            <span class="shortcut-item"><kbd>Strg</kbd> + <kbd>D</kbd> Design wechseln</span>
+            <span class="shortcut-item"><kbd>Esc</kbd> Dialog schließen</span>
+        </div>
+
         <!-- ── Modals ──────────────────────────────────────────────── -->
         <TicketModal v-if="ui.activeModal === 'ticket-create' || ui.activeModal === 'ticket-edit'"
             :model-value="true" @update:model-value="ui.closeModal()" />
@@ -564,6 +573,38 @@ onMounted(() => board.fetchBoard())
     align-items: stretch;
     height: 100%;
     flex: 0 0 auto;
+}
+
+/* ── Tastenkürzel-Leiste ─────────────────────────────────────────── */
+.shortcuts-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.625rem 1rem;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+}
+
+.shortcut-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+
+.shortcut-item kbd {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    font-family: inherit;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
 }
 
 /* Add-column placeholder */
