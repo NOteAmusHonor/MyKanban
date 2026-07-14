@@ -32,7 +32,7 @@
   "meta": {
     "version": "1.0.0",
     "createdAt": "2026-04-09T21:20:56.250Z",
-    "lastModified": "2026-07-01T11:19:17.383Z"
+    "lastModified": "2026-07-14T20:09:34.273Z"
   },
   "board": {
     "id": "board-1",
@@ -44,7 +44,7 @@
       "title": "Backlog",
       "order": 0,
       "color": "#1957ae",
-      "wipLimit": 3
+      "wipLimit": 0
     },
     {
       "id": "col-todo",
@@ -77,31 +77,31 @@
   "tickets": [
     {
       "id": "7ua54whfkmr1yuk40",
-      "columnId": "col-todo",
+      "columnId": "col-backlog",
       "ticketNumber": 1041,
       "title": "f",
       "description": "fasfasfa",
       "priority": "low",
       "labels": [],
-      "order": 2,
+      "order": 1,
       "createdAt": "2026-07-01T11:02:12.048Z",
-      "updatedAt": "2026-07-01T11:19:17.383Z"
+      "updatedAt": "2026-07-14T20:08:57.553Z"
     },
     {
       "id": "zpxzis69bmr1yuq6c",
-      "columnId": "col-todo",
+      "columnId": "col-backlog",
       "ticketNumber": 5009,
       "title": "fasfasfasffassf",
       "description": "fasfasfas",
       "priority": "medium",
       "labels": [],
-      "order": 1,
+      "order": 2,
       "createdAt": "2026-07-01T11:02:19.908Z",
-      "updatedAt": "2026-07-01T11:19:17.383Z"
+      "updatedAt": "2026-07-14T20:08:57.553Z"
     },
     {
       "id": "op1l5t88fmr1yv1eo",
-      "columnId": "col-todo",
+      "columnId": "col-backlog",
       "ticketNumber": 6374,
       "title": "fasfasf",
       "description": "fasfafasfa",
@@ -109,7 +109,7 @@
       "labels": [],
       "order": 0,
       "createdAt": "2026-07-01T11:02:34.464Z",
-      "updatedAt": "2026-07-01T11:19:17.383Z"
+      "updatedAt": "2026-07-14T20:08:57.553Z"
     }
   ]
 }

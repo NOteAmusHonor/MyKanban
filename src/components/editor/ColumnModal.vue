@@ -105,7 +105,9 @@ async function save() {
     if (!form.value.title.trim()) return
     saving.value = true
     try {
-        const wip = form.value.wipLimit > 0 ? form.value.wipLimit : undefined
+        // 0 is the explicit value for an unlimited column and must be sent
+        // to the API so an existing WIP limit is actually overwritten.
+        const wip = form.value.wipLimit > 0 ? form.value.wipLimit : 0
         if (isEdit.value && ui.columnModalData?.column) {
             await board.updateColumn(ui.columnModalData.column.id, {
                 title: form.value.title.trim(),
